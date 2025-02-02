@@ -16,25 +16,11 @@
         </header>
         <section class="presentation-container flex fc center">
             <div class="presentation-texts-container flex fc center">
-                <h1 id="title" class="name">ROMINA<br>ANGELANI</h1>
-                <h2 id="description" class="hi">¡Un gusto conocerte!</h2>
-
-                <div class="presentation-btn-container flex fr center">
-                    <a id="skill-1" href="#art">ARTE</a>
-                    <a id="skill-2" href="#dev">PROGRAMACIÓN</a>
-                    <a id="skill-3" href="#lan">IDIOMAS</a>
-                </div>
+                <span id="title" class="name">ROMINA<br>ANGELANI</span>
+                <span id="description" class="hi">¡Un gusto conocerte!</span>
             </div>
         </section>
-        <section id="art" style="width: 100vw; height: 100vh;">
-
-        </section>
-        <footer class="footer">
-            <span id="scroll-up" class="flex fc center" style="transform: rotate(90deg);">&larr;</span>
-            <span id="scroll-down" class="flex fc center" style="transform: rotate(90deg);">&rarr;</span>
-        </footer>
     </body>
-
     
 </html>
 
@@ -54,7 +40,7 @@
     .center{align-items: center;justify-content: center;}
 
     .body{
-        background: linear-gradient(160deg,#000, #00001a); ;
+        background: #000; 
         overflow: hidden; 
         width: 100vw; 
         height: 100vh;
@@ -77,13 +63,7 @@
         text-align: center;
     }
 
-    .footer{
-        position: fixed;
-        font-size: 2em;
-        
-    }
-
-    .header span, footer span{
+    .header span{
         padding: 4px;
         margin: 4px;
         color: #fff;
@@ -92,9 +72,7 @@
         border-radius: 5px;
     }
 
-    .footer span{padding: 0 4px 6px 4px;}
-
-    .header span:hover, footer span:hover{
+    .header span:hover{
         cursor: pointer;
         background: #585eff;
         border: 2px solid #000;
@@ -116,7 +94,7 @@
 
     .name{
         color: #ff63d8;
-        font-size: 5.5em;
+        font-size: 5em;
         text-align: center;
         letter-spacing: 1rem;
         text-shadow: 5px 5px 1px #21ef80;
@@ -124,78 +102,26 @@
 
     .hi{
         color: #fff;
-    }
-
-    .presentation-btn-container{
-        margin-top: 50px;
-    }
-
-    .presentation-btn-container a{
-        padding: 5px 10px;
-        margin: 0 20px;
-        font-size: 1.7em;
-        color: #fff;
-        text-decoration: none;
-        box-shadow: 0 2px 1px 4px #fff;
-        border-radius: 10px;
-    }
-
-    #skill-1{
-        background: #8488f4;
-        border: 3px solid #585eff;
-        text-shadow: -2px 2px 1px #585eff;
-    }
-
-    #skill-2{
-        background: #21ef80;
-        border: 3px solid #00c49c;
-        text-shadow: -2px 2px 1px #00c49c;
-    }
-
-    #skill-3{
-        background: #ff63d8;
-        border: 3px solid #cb34a5;
-        text-shadow: -2px 2px 1px #cb34a5;
-    }
-
-    .presentation-btn-container a:hover{
-        cursor: pointer;
-    }
-
-    #skill-1:hover{
-        background: #000;
-        border: 3px solid #8488f4;
-    }
-
-    #skill-2:hover{
-        background: #000;
-        border: 3px solid #21ef80;
-    }
-
-    #skill-3:hover{
-        background: #000;
-        border: 3px solid #ff63d8;
+        font-size: 1rem;
+        text-align: center;
     }
 
     @media screen and (max-width: 700px) {
         .presentation-texts-container{
             width: 70%;
             height: 70%;
-            padding: 0 2% 2%;
-            border: 3px solid #21ef80;
-            border-radius: 30px;
-            background: #000;
         }
 
         .name{
-            color: #ff63d8;
             font-size: 3em;
-            text-align: center;
-            letter-spacing: 1rem;
-            text-shadow: 5px 5px 1px #21ef80;
         }
     }
 
+    @media screen and (max-width: 540px) {
+        .name{
+            font-size: 2em;
+        }
+    }
 </style>
 
 <script>
@@ -225,28 +151,7 @@
         document.getElementById("skill-3").textContent = textos[idioma].skill3;
     }
 
-    // Scroll btns
-
-    document.getElementById("scroll-down").addEventListener("click", function () {
-        window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
-    });
-
-    document.getElementById("scroll-up").addEventListener("click", function () {
-        window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
-    });
-
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "ArrowDown") {
-            // Mover hacia abajo 100vh
-            window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
-        } else if (event.key === "ArrowUp") {
-            // Mover hacia arriba 100vh
-            window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
-        }
-    });
-
     // Background
-
     const canvas = document.getElementById("starsCanvas");
     const ctx = canvas.getContext("2d");
 
