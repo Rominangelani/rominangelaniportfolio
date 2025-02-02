@@ -9,15 +9,15 @@
         <title>Romina Angelani</title>
     </head>
     <body class="body flex fc">
-        <!-- <canvas id="starsCanvas" class="canvas-back"></canvas> -->
+        <canvas id="starsCanvas" class="canvas-back"></canvas>
         <header class="header flex fc">
             <span onclick="cambiarIdioma('es')">Español</span>
             <span onclick="cambiarIdioma('en')">English</span>
         </header>
-        <div class="presentation-container flex fc center">
+        <section class="presentation-container flex fc center">
             <div class="presentation-texts-container flex fc center">
-                <span id="title" class="name">ROMINA<br>ANGELANI</span>
-                <span id="description" class="hi">¡Un gusto conocerte!</span>
+                <h1 id="title" class="name">ROMINA<br>ANGELANI</h1>
+                <h2 id="description" class="hi">¡Un gusto conocerte!</h2>
 
                 <div class="presentation-btn-container flex fr center">
                     <a id="skill-1" href="#art">ARTE</a>
@@ -25,8 +25,16 @@
                     <a id="skill-3" href="#lan">IDIOMAS</a>
                 </div>
             </div>
+        </section>
+        <div id="art" style="width: 100vw; height: 100vh;">
+
         </div>
+        <footer class="footer">
+            <span id="scroll-up" class="flex fc center" style="transform: rotate(90deg);">&larr;</span>
+            <span id="scroll-down" class="flex fc center" style="transform: rotate(90deg);">&rarr;</span>
+        </footer>
     </body>
+
     
 </html>
 
@@ -46,7 +54,7 @@
     .center{align-items: center;justify-content: center;}
 
     .body{
-        background: #000; 
+        background: linear-gradient(160deg,#000, #00001a); 
         overflow: hidden; 
         width: 100vw; 
         height: 100vh;
@@ -69,7 +77,13 @@
         text-align: center;
     }
 
-    .header span{
+    .footer{
+        position: fixed;
+        font-size: 2em;
+
+    }
+
+    .header span, footer span{
         padding: 4px;
         margin: 4px;
         color: #fff;
@@ -78,7 +92,9 @@
         border-radius: 5px;
     }
 
-    .header span:hover{
+    .footer span{padding: 0 4px 6px 4px;}
+
+    .header span:hover, footer span:hover{
         cursor: pointer;
         background: #585eff;
         border: 2px solid #000;
@@ -100,7 +116,7 @@
 
     .name{
         color: #ff63d8;
-        font-size: 5em;
+        font-size: 5.5em;
         text-align: center;
         letter-spacing: 1rem;
         text-shadow: 5px 5px 1px #21ef80;
@@ -108,8 +124,6 @@
 
     .hi{
         color: #fff;
-        font-size: 1rem;
-        text-align: center;
     }
 
     .presentation-btn-container{
@@ -163,28 +177,12 @@
         border: 3px solid #ff63d8;
     }
 
-    @media screen and (max-width: 800px) {
-        .presentation-texts-container{
-            width: 70%;
-            height: 70%;
-        }
+    @media screen and (max-width: 1300px) {
         .name{
-            font-size: 3em;
-        }
-        .presentation-btn-container a{
-            margin: 20px;
-            font-size: 1.2rem;
+            background-image: none;
         }
     }
 
-    @media screen and (max-width: 540px) {
-        .presentation-texts-container{
-            width: 90%;
-        }
-        .name{
-            font-size: 2em;
-        }
-    }
 </style>
 
 <script>
@@ -207,59 +205,80 @@
     };
 
     function cambiarIdioma(idioma) {
-        document.getElementById("title").innerHTML = textos[idioma].title.replace(" ", "<br>");
+        document.getElementById("title").textContent = textos[idioma].title;
         document.getElementById("description").textContent = textos[idioma].description;
         document.getElementById("skill-1").textContent = textos[idioma].skill1;
         document.getElementById("skill-2").textContent = textos[idioma].skill2;
         document.getElementById("skill-3").textContent = textos[idioma].skill3;
     }
 
+    // Scroll btns
+
+    document.getElementById("scroll-down").addEventListener("click", function () {
+        window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+    });
+
+    document.getElementById("scroll-up").addEventListener("click", function () {
+        window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowDown") {
+            // Mover hacia abajo 100vh
+            window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+        } else if (event.key === "ArrowUp") {
+            // Mover hacia arriba 100vh
+            window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
+        }
+    });
+
     // Background
-    // const canvas = document.getElementById("starsCanvas");
-    // const ctx = canvas.getContext("2d");
 
-    // canvas.width = window.innerWidth;
-    // canvas.height = window.innerHeight;
+    const canvas = document.getElementById("starsCanvas");
+    const ctx = canvas.getContext("2d");
 
-    // const stars = [];
-    // const numStars = 100;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-    // // Generar estrellas
-    // for (let i = 0; i < numStars; i++) {
-    //     stars.push({
-    //         x: Math.random() * canvas.width,
-    //         y: Math.random() * canvas.height,
-    //         size: Math.random() * 3 + 2, // Tamaño aleatorio entre 2 y 5
-    //         opacity: Math.random() * 0.5 + 0.5, // Opacidad entre 0.5 y 1
-    //     });
-    // }
+    const stars = [];
+    const numStars = 100;
 
-    // // Dibujar y animar estrellas
-    // function drawStars() {
-    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Generar estrellas
+    for (let i = 0; i < numStars; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 2, // Tamaño aleatorio entre 2 y 5
+            opacity: Math.random() * 0.5 + 0.5, // Opacidad entre 0.5 y 1
+        });
+    }
+
+    // Dibujar y animar estrellas
+    function drawStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-    //     for (let star of stars) {
-    //         // Cambiar la opacidad suavemente
-    //         star.opacity += (Math.random() - 0.5) * 0.05;
+        for (let star of stars) {
+            // Cambiar la opacidad suavemente
+            star.opacity += (Math.random() - 0.5) * 0.05;
             
-    //         // Limitar la opacidad entre 0.3 y 1
-    //         if (star.opacity > 1) star.opacity = 1;
-    //         if (star.opacity < 0.3) star.opacity = 0.3;
+            // Limitar la opacidad entre 0.3 y 1
+            if (star.opacity > 1) star.opacity = 1;
+            if (star.opacity < 0.3) star.opacity = 0.3;
 
-    //         // Dibujar estrella cuadrada con opacidad variable
-    //         ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-    //         ctx.fillRect(star.x, star.y, star.size, star.size);
-    //     }
+            // Dibujar estrella cuadrada con opacidad variable
+            ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+            ctx.fillRect(star.x, star.y, star.size, star.size);
+        }
 
-    //     requestAnimationFrame(drawStars);
-    // }
+        requestAnimationFrame(drawStars);
+    }
 
-    // drawStars();
+    drawStars();
 
-    // // Ajustar tamaño del canvas si cambia la ventana
-    // window.addEventListener("resize", () => {
-    //     canvas.width = window.innerWidth;
-    //     canvas.height = window.innerHeight;
-    // });
+    // Ajustar tamaño del canvas si cambia la ventana
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 
 </script>
