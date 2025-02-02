@@ -53,12 +53,7 @@
     .center{align-items: center;justify-content: center;}
 
     .body{
-        background: #000; 
-        background-image: url(Background.png); 
-        background-position: center; 
-        background-repeat: no-repeat; 
-        background-attachment: fixed; 
-        background-size: cover; 
+        background: linear-gradient(160deg,#000, #00001a); ;
         overflow: hidden; 
         width: 100vw; 
         height: 100vh;
@@ -227,5 +222,53 @@
         }
     });
 
+    // Background
+
+    const canvas = document.getElementById("starsCanvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const stars = [];
+    const numStars = 100;
+
+    // Generar estrellas
+    for (let i = 0; i < numStars; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 2, // Tamaño aleatorio entre 2 y 5
+            opacity: Math.random() * 0.5 + 0.5, // Opacidad entre 0.5 y 1
+        });
+    }
+
+    // Dibujar y animar estrellas
+    function drawStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let star of stars) {
+            // Cambiar la opacidad suavemente
+            star.opacity += (Math.random() - 0.5) * 0.05;
+            
+            // Limitar la opacidad entre 0.3 y 1
+            if (star.opacity > 1) star.opacity = 1;
+            if (star.opacity < 0.3) star.opacity = 0.3;
+
+            // Dibujar estrella cuadrada con opacidad variable
+            ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+            ctx.fillRect(star.x, star.y, star.size, star.size);
+        }
+
+        requestAnimationFrame(drawStars);
+    }
+
+    drawStars();
+
+    // Ajustar tamaño del canvas si cambia la ventana
+    window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 
 </script>
