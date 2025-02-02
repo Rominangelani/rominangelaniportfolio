@@ -9,6 +9,7 @@
         <title>Romina Angelani</title>
     </head>
     <body class="body flex fc">
+        <canvas id="starsCanvas" class="canvas-back"></canvas>
         <header class="header flex fc">
             <span onclick="cambiarIdioma('es')">Español</span>
             <span onclick="cambiarIdioma('en')">English</span>
@@ -56,6 +57,15 @@
         background: linear-gradient(160deg,#000, #00001a); ;
         overflow: hidden; 
         width: 100vw; 
+        height: 100vh;
+    }
+
+    .canvas-back{
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100vw;
         height: 100vh;
     }
 
