@@ -9,15 +9,21 @@
         <title>Romina Angelani</title>
     </head>
     <body class="body flex fc">
-        <canvas id="starsCanvas" class="canvas-back"></canvas>
-        <div class="header flex fc">
+        <!-- <canvas id="starsCanvas" class="canvas-back"></canvas> -->
+        <header class="header flex fc">
             <span onclick="cambiarIdioma('es')">Español</span>
             <span onclick="cambiarIdioma('en')">English</span>
-        </div>
+        </header>
         <div class="presentation-container flex fc center">
             <div class="presentation-texts-container flex fc center">
                 <span id="title" class="name">ROMINA<br>ANGELANI</span>
                 <span id="description" class="hi">¡Un gusto conocerte!</span>
+
+                <div class="presentation-btn-container flex fr center">
+                    <a id="skill-1" href="#art">ARTE</a>
+                    <a id="skill-2" href="#dev">PROGRAMACIÓN</a>
+                    <a id="skill-3" href="#lan">IDIOMAS</a>
+                </div>
             </div>
         </div>
     </body>
@@ -106,18 +112,75 @@
         text-align: center;
     }
 
-    @media screen and (max-width: 700px) {
+    .presentation-btn-container{
+        margin-top: 50px;
+    }
+
+    .presentation-btn-container a{
+        padding: 5px 10px;
+        margin: 0 20px;
+        font-size: 1.7em;
+        color: #fff;
+        text-decoration: none;
+        box-shadow: 0 2px 1px 4px #fff;
+        border-radius: 10px;
+    }
+
+    #skill-1{
+        background: #8488f4;
+        border: 3px solid #585eff;
+        text-shadow: -2px 2px 1px #585eff;
+    }
+
+    #skill-2{
+        background: #21ef80;
+        border: 3px solid #00c49c;
+        text-shadow: -2px 2px 1px #00c49c;
+    }
+
+    #skill-3{
+        background: #ff63d8;
+        border: 3px solid #cb34a5;
+        text-shadow: -2px 2px 1px #cb34a5;
+    }
+
+    .presentation-btn-container a:hover{
+        cursor: pointer;
+    }
+
+    #skill-1:hover{
+        background: #000;
+        border: 3px solid #8488f4;
+    }
+
+    #skill-2:hover{
+        background: #000;
+        border: 3px solid #21ef80;
+    }
+
+    #skill-3:hover{
+        background: #000;
+        border: 3px solid #ff63d8;
+    }
+
+    @media screen and (max-width: 800px) {
         .presentation-texts-container{
             width: 70%;
             height: 70%;
         }
-
         .name{
             font-size: 3em;
+        }
+        .presentation-btn-container a{
+            margin: 20px;
+            font-size: 1.2rem;
         }
     }
 
     @media screen and (max-width: 540px) {
+        .presentation-texts-container{
+            width: 90%;
+        }
         .name{
             font-size: 2em;
         }
@@ -152,51 +215,51 @@
     }
 
     // Background
-    const canvas = document.getElementById("starsCanvas");
-    const ctx = canvas.getContext("2d");
+    // const canvas = document.getElementById("starsCanvas");
+    // const ctx = canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // canvas.width = window.innerWidth;
+    // canvas.height = window.innerHeight;
 
-    const stars = [];
-    const numStars = 100;
+    // const stars = [];
+    // const numStars = 100;
 
-    // Generar estrellas
-    for (let i = 0; i < numStars; i++) {
-        stars.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 3 + 2, // Tamaño aleatorio entre 2 y 5
-            opacity: Math.random() * 0.5 + 0.5, // Opacidad entre 0.5 y 1
-        });
-    }
+    // // Generar estrellas
+    // for (let i = 0; i < numStars; i++) {
+    //     stars.push({
+    //         x: Math.random() * canvas.width,
+    //         y: Math.random() * canvas.height,
+    //         size: Math.random() * 3 + 2, // Tamaño aleatorio entre 2 y 5
+    //         opacity: Math.random() * 0.5 + 0.5, // Opacidad entre 0.5 y 1
+    //     });
+    // }
 
-    // Dibujar y animar estrellas
-    function drawStars() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // // Dibujar y animar estrellas
+    // function drawStars() {
+    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        for (let star of stars) {
-            // Cambiar la opacidad suavemente
-            star.opacity += (Math.random() - 0.5) * 0.05;
+    //     for (let star of stars) {
+    //         // Cambiar la opacidad suavemente
+    //         star.opacity += (Math.random() - 0.5) * 0.05;
             
-            // Limitar la opacidad entre 0.3 y 1
-            if (star.opacity > 1) star.opacity = 1;
-            if (star.opacity < 0.3) star.opacity = 0.3;
+    //         // Limitar la opacidad entre 0.3 y 1
+    //         if (star.opacity > 1) star.opacity = 1;
+    //         if (star.opacity < 0.3) star.opacity = 0.3;
 
-            // Dibujar estrella cuadrada con opacidad variable
-            ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-            ctx.fillRect(star.x, star.y, star.size, star.size);
-        }
+    //         // Dibujar estrella cuadrada con opacidad variable
+    //         ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+    //         ctx.fillRect(star.x, star.y, star.size, star.size);
+    //     }
 
-        requestAnimationFrame(drawStars);
-    }
+    //     requestAnimationFrame(drawStars);
+    // }
 
-    drawStars();
+    // drawStars();
 
-    // Ajustar tamaño del canvas si cambia la ventana
-    window.addEventListener("resize", () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
+    // // Ajustar tamaño del canvas si cambia la ventana
+    // window.addEventListener("resize", () => {
+    //     canvas.width = window.innerWidth;
+    //     canvas.height = window.innerHeight;
+    // });
 
 </script>
