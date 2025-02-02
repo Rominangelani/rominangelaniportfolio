@@ -144,7 +144,7 @@
     };
 
     function cambiarIdioma(idioma) {
-        document.getElementById("title").textContent = textos[idioma].title;
+        document.getElementById("title").innerHTML = textos[idioma].title.replace(" ", "<br>");
         document.getElementById("description").textContent = textos[idioma].description;
         document.getElementById("skill-1").textContent = textos[idioma].skill1;
         document.getElementById("skill-2").textContent = textos[idioma].skill2;
