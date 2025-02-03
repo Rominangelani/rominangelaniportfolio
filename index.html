@@ -14,7 +14,7 @@
             <span onclick="cambiarIdioma('es')">Español</span>
             <span onclick="cambiarIdioma('en')">English</span>
         </header>
-        <div class="section-container flex fc center">
+        <div id="home" class="section-container flex fc center">
             <div class="presentation-texts-container flex fc center">
                 <span id="title" class="name">ROMINA<br>ANGELANI</span>
                 <span id="description" class="hi">¡Un gusto conocerte!</span>
@@ -28,7 +28,7 @@
         </div>
         <div id="art" class="section-container flex fc">
             <div class="art-texts">
-
+                <a class="" href="#home">MENÚ</a>
             </div>
         </div>
     </body>
@@ -168,6 +168,23 @@
         border: 3px solid #ff63d8;
     }
 
+    .art-texts a{
+        position: absolute;
+        padding: 4px;
+        transform: translate(12px,90vh);
+        color: #fff;
+        text-decoration: none;
+        background:#000;
+        border: 2px solid #cb34a5;
+        border-radius: 5px;
+    }
+
+    .art-texts a:hover{
+        cursor: pointer;
+        background: #cb34a5;
+        border: 2px solid #000;
+    }
+
     @media screen and (max-width: 800px) {
         .presentation-texts-container{
             width: 70%;
@@ -179,6 +196,9 @@
         .presentation-btn-container a{
             margin: 20px;
             font-size: 1.2rem;
+        }
+        .header{
+            flex-direction: row;
         }
     }
 
