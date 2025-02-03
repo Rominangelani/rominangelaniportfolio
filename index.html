@@ -200,6 +200,16 @@
         background:#000;
         border: 2px solid #cb34a5;
         border-radius: 5px;
+        opacity: 0; 
+        transform: scale(0.5); 
+        transition: opacity 0.3s ease, transform 0.3s ease; 
+        pointer-events: none;
+    }
+
+    .art-texts a.show {
+        opacity: 1;
+        transform: scale(1); /* Aparece con efecto de crecimiento */
+        pointer-events: auto; /* Hace que sea clickeable */
     }
 
     .art-texts a:hover{
@@ -212,6 +222,9 @@
         .presentation-btn-container a {
             margin: 20px;
         }
+        .name{
+            letter-spacing: 0;
+        }
         .footer span{
             margin: 10px;
         }
@@ -222,6 +235,19 @@
 </style>
 
 <script>
+    // Menu
+    document.querySelectorAll("#home a").forEach(link => {
+        link.addEventListener("click", function() {
+            const menu = document.querySelector(".art-texts a"); 
+            menu.classList.add("show"); // Solo muestra el botón, no lo oculta
+        });
+    });
+
+    // Cerrar el menú SOLO si se hace clic sobre él
+    document.querySelector(".art-texts a").addEventListener("click", function() {
+        this.classList.remove("show"); // Se oculta cuando se hace clic en sí mismo
+    });
+
     // Languages
     const textos = {
         es: {
