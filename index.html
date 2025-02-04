@@ -26,9 +26,10 @@
                 </div>
             </div>
         </div>
+        <a id="menu" href="#home">MENÚ</a>
         <div id="art" class="section-container flex fc">
             <div class="art-texts">
-                <a class="" href="#home">MENÚ</a>
+                
             </div>
         </div>
         <div class="footer">
@@ -190,7 +191,7 @@
         border: 3px solid #ff63d8;
     }
 
-    .art-texts a{
+    #menu{
         position: fixed;
         padding: 4px;
         bottom: 12px;
@@ -206,13 +207,13 @@
         pointer-events: none;
     }
 
-    .art-texts a.show {
+    #menu.show {
         opacity: 1;
         transform: scale(1); /* Aparece con efecto de crecimiento */
         pointer-events: auto; /* Hace que sea clickeable */
     }
 
-    .art-texts a:hover{
+    #menu:hover{
         cursor: pointer;
         background: #cb34a5;
         border: 2px solid #000;
@@ -236,16 +237,15 @@
 
 <script>
     // Menu
+    let menu = document.getElementById("menu"); 
     document.querySelectorAll("#home a").forEach(link => {
         link.addEventListener("click", function() {
-            const menu = document.querySelector(".art-texts a"); 
-            menu.classList.add("show"); // Solo muestra el botón, no lo oculta
+            menu.classList.add("show"); 
         });
     });
 
-    // Cerrar el menú SOLO si se hace clic sobre él
-    document.querySelector(".art-texts a").addEventListener("click", function() {
-        this.classList.remove("show"); // Se oculta cuando se hace clic en sí mismo
+    menu.addEventListener("click", function() {
+        this.classList.remove("show"); 
     });
 
     // Languages
