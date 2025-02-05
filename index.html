@@ -16,12 +16,14 @@
                 font-weight: 400;
                 font-style: normal;
                 scroll-behavior: smooth;
+                box-sizing: border-box;
             }
         
             .flex{display: flex;flex-wrap: wrap;}
             .fc{flex-direction: column;}
             .fr{flex-direction: row;}
             .center{align-items: center;justify-content: center;}
+            .body a{text-decoration: none;}
         
             .body{
                 background: linear-gradient(160deg,#000, #00001a); 
@@ -48,17 +50,7 @@
                 text-align: center;
             }
         
-            .scroll {
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                z-index: 100;
-                bottom: 10px;
-                right: 10px;
-                font-size: clamp(2em,2vw,5em);
-            }
-        
-            .header span, .scroll span{
+            .header span{
                 padding: 4px;
                 margin: 4px;
                 color: #fff;
@@ -66,14 +58,10 @@
                 border: 2px solid #585eff;
             }
 
-            #scroll-up{border-radius: 10px 0 0 10px;}
-            #scroll-down{border-radius: 0 10px 10px 0;}
             #español{border-radius: 10px 10px 0 0;}
             #english{border-radius: 0 0 10px 10px;}
         
-            .scroll span{padding: 0 4px 6px 4px;}
-        
-            .header span:hover, .scroll span:hover{
+            .header span:hover{
                 cursor: pointer;
                 background: #585eff;
                 border: 2px solid #000;
@@ -90,22 +78,15 @@
                 align-items: center;
                 justify-content: center;
             }
-
-            /* .section-box {
-                position: relative;
-                width: 100vw;
-                overflow: hidden;
-            } */
         
             .presentation-texts-box{
                 width: 80%;
                 max-width: 1300px; 
                 min-width: 250px; 
-                height: 70%;
+                height: auto;
                 max-height: 700px;
                 min-height: 400px; 
-                padding: 5%;
-                padding: 0 2% 2%;
+                padding: 4% 2% 6.5% 2%;
                 border: 3px solid #21ef80;
                 border-radius: 30px;
                 background: #000;
@@ -130,7 +111,7 @@
                 margin-top: 50px;
             }
         
-            .presentation-btn-box a{
+            .presentation-btn-box a, .art-item span{
                 padding: 5px 10px;
                 margin: 0 20px;
                 font-size: clamp(1.2em, 1.7vw, 2.7em);
@@ -138,21 +119,22 @@
                 text-decoration: none;
                 box-shadow: 0 2px 1px 4px #fff;
                 border-radius: 10px;
+                text-align: center;
             }
         
-            #skill-1{
+            #skill-1, .art-item-1 span{
                 background: #8488f4;
                 border: 3px solid #585eff;
                 text-shadow: -2px 2px 1px #585eff;
             }
         
-            #skill-2{
+            #skill-2, .art-item-2 span{
                 background: #21ef80;
                 border: 3px solid #00c49c;
                 text-shadow: -2px 2px 1px #00c49c;
             }
         
-            #skill-3{
+            #skill-3, .art-item-3 span{
                 background: #ff63d8;
                 border: 3px solid #cb34a5;
                 text-shadow: -2px 2px 1px #cb34a5;
@@ -162,22 +144,22 @@
                 cursor: pointer;
             }
         
-            #skill-1:hover{
+            #skill-1:hover, .art-item-1 span:hover{
                 background: #000;
                 border: 3px solid #8488f4;
             }
         
-            #skill-2:hover{
+            #skill-2:hover, .art-item-2 span:hover{
                 background: #000;
                 border: 3px solid #21ef80;
             }
         
-            #skill-3:hover{
+            #skill-3:hover, .art-item-3 span:hover{
                 background: #000;
                 border: 3px solid #ff63d8;
             }
         
-            #menu{
+            #menu, #menuArt{
                 position: fixed;
                 z-index: 100;
                 padding: 4px;
@@ -193,17 +175,28 @@
                 transition: opacity 0.3s ease, transform 0.3s ease; 
                 pointer-events: none;
             }
-        
-            #menu.show {
-                opacity: 1;
-                transform: scale(1); /* Aparece con efecto de crecimiento */
-                pointer-events: auto; /* Hace que sea clickeable */
+
+            #menuArt{
+                border-radius: 10px 10px 0 0;
+                bottom: 54px;
             }
         
-            #menu:hover{
+            #menu.show, #menuArt.show{
+                opacity: 1;
+                transform: scale(1);
+                pointer-events: auto; 
+            }
+        
+            #menu:hover, #menuArt:hover{
                 cursor: pointer;
                 background: #cb34a5;
                 border: 2px solid #000;
+            }
+
+            #menu.extend{
+                width: 84px;
+                border-radius: 0 0 10px 10px;
+                transition: width .3s;
             }
         
             .slideshow-box {
@@ -259,10 +252,10 @@
             .next{padding: 10px 5px 10px 10px; border-radius: 10px 0 0 10px;}
 
             .art-presentation-box{
-                margin: 0 50px 0 0;
+                margin: 0;
                 padding: 20px;
                 position: relative;
-                width: 40vw;
+                width: 80vw;
                 height: auto;
                 border: 3px solid #cb34a5;
                 border-radius: 30px;
@@ -271,6 +264,88 @@
 
             #art-presentation{
                 color: #fff;
+                font-size: clamp(.8em, 1.2vw, 2em);
+            }
+
+            #artSlide1, #artSlide2, #artSlide3 {
+                position: absolute;
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                transition: transform 0.5s ease-in-out;
+                flex-wrap: nowrap;
+            }
+
+            #artSlide1 { left: 0; }
+
+            #artSlide2 { left: 100vw; }
+
+            #artSlide3{ left: 200vw }
+
+            .art-item{
+                margin: 3rem 3rem 0;
+            }
+
+            .art-item span{
+                margin: 3rem 0 0;
+                color: #fff;
+                font-size: clamp(.6em, 1.7vw, 2.7em);
+            }
+
+            .art-item img{
+                height: 100px;
+                width: auto;
+            }
+
+            .art-item-1 img{
+                filter: drop-shadow(0 0 5px #cb34a5);
+                animation: float1 5s ease-in-out infinite alternate;
+            }
+
+            @keyframes float1 {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                }
+                50% {
+                    transform: translateY(-10px) rotate(2deg);
+                }
+                100% {
+                    transform: translateY(0) rotate(0deg);
+                }
+            }
+
+            .art-item-2 img{
+                filter: drop-shadow(0 0 5px #cb34a5);
+                animation: float2 4s ease-in-out infinite alternate;
+            }
+
+            @keyframes float2 {
+                0% {
+                    transform: translateY(-10px) rotate(3deg); 
+                }
+                50% {
+                    transform: translateY(0) rotate(0deg);
+                }
+                100% {
+                    transform: translateY(-12px) rotate(2deg); 
+                }
+            }
+
+            .art-item-3 img{
+                filter: drop-shadow(0 0 5px #cb34a5);
+                animation: float3 4.5s ease-in-out infinite alternate;
+            }
+
+            @keyframes float3 {
+                0% {
+                    transform: translateY(0) rotate(1deg);
+                }
+                50% {
+                    transform: translateY(-12px) rotate(-2deg);
+                }
+                100% {
+                    transform: translateY(0) rotate(0deg);
+                }
             }
 
             @media screen and (max-width: 800px) {
@@ -280,16 +355,28 @@
                 .name{
                     letter-spacing: 0;
                 }
-                .scroll span{
-                    margin: 2px 10px;
-                }
-                .header, .scroll{
+                .header{
                     flex-direction: row;
                 }
-                .animation-refs-box{
-                    margin: 60px 0 0 0;
-                    width: 90vw;
-                    height: 100vh;
+                #español{border-radius: 10px 0 0 10px;}
+                #english{border-radius: 0 10px 10px 0;}
+                #menuArt{
+                    bottom: 12px;
+                    left: 84px;
+                    border-radius: 0 10px 10px 0;
+                }
+                #menu.extend{
+                    width: auto;
+                    border-radius: 10px 0 0 10px;
+                }
+                .art-presentation-box{
+                    /* margin: 10vh 10vw 10vh 10vw; */
+                    padding: 15px;
+                    width: 85vw;
+                    height: auto;
+                }
+                .art-item{
+                    margin: 1rem 1rem 0;
                 }
             }
 
@@ -301,22 +388,21 @@
                 .carousel-btns span {
                     border: none;
                 }
-            }
-
-            #artSlide1, #artSlide2 {
-                position: absolute;
-                width: 100vw;
-                height: 100vh;
-                top: 0;
-                transition: transform 0.5s ease-in-out;
-            }
-
-            #artSlide1 {
-                left: 0;
-            }
-
-            #artSlide2 {
-                left: 100vw;
+                .art-presentation-box{
+                    padding: 10px;
+                    width: 90vw;
+                    height: auto;
+                }
+                .art-item{
+                    margin: 1.5rem .5rem;
+                }
+                .art-item span{
+                    margin: 1rem 0 0;
+                    color: #000;
+                }
+                .art-item img{
+                    height: 60px;
+                }
             }
 
         </style>
@@ -343,17 +429,28 @@
         <div id="art" class="section-box flex fr center">
             <div id="artSlide1" class="section-slide flex fc center">
                 <div class="art-presentation-box">
-                    <a href="#artSlide2">
                     <p id="art-presentation">
                         Estudio y practico ilustración hace más de 14 años, es una pasión que descubrí a muy temprana edad. A mis 14 años comencé a trasladar todo mi conocimiento al arte digital, aprendiendo, con los años, el uso de diversos programas y herramientas que hoy en día me permiten dedicarme al diseño, la ilustración y la animación de manera proferional. 
                         <br />
                         Con experiencia en trabajo desde 2020, tengo varios proyectos realizados que demuestran mis habilidades:
                     </p>
-                    </a>
+                </div>
+                <div id="artProjects" class="art-projects flex fr center">
+                        <a class="art-item art-item-1 flex fc center" href="#artSlide2">
+                            <img src="design-icon.svg" alt="design icon" />
+                            <span>DISEÑO</span>
+                        </a>
+                        <a class="art-item art-item-2 flex fc center" href="#artSlide3">
+                            <img src="design-icon.svg" alt="design icon" />
+                            <span>ILUSTRACIÓN</span>
+                        </a>
+                        <a class="art-item art-item-3 flex fc center" href="#artSlide4">
+                            <img src="design-icon.svg" alt="design icon" />
+                            <span>ANIMACIÓN</span>
+                        </a>
                 </div>
             </div>
             <div id="artSlide2" class="section-slide flex fc center">
-                <a href="#artSlide1">
                 <div class="carousel">
                     <div class="carousel-imgs">
                         <img src="Vegetta.png" alt="Diseño de personaje para redes sociales">
@@ -365,13 +462,10 @@
                         <span class="next" onclick="nextSlide()">❯</span>
                     </div>
                 </div>
-                </a>
             </div>
+            <div id="artSlide3" class="flex center"><a href="#artSlide1"><button>SLIDE 1</button></a></div>
+            <a id="menuArt" href="#artSlide1">VOLVER</a>
         </div>
-        <!-- <div class="scroll">
-            <span id="scroll-up" class="flex fc center" style="transform: rotate(90deg);">&larr;</span>
-            <span id="scroll-down" class="flex fc center" style="transform: rotate(90deg);">&rarr;</span>
-        </div> -->
 
         <script>
             // Menu
@@ -384,6 +478,20 @@
         
             menu.addEventListener("click", function() {
                 this.classList.remove("show"); 
+            });
+
+            // Menu art
+            let menuArt = document.getElementById("menuArt"); 
+            document.querySelectorAll("#artProjects .art-item").forEach(link => {
+                link.addEventListener("click", function() {
+                    menuArt.classList.add("show"); 
+                    menu.classList.add("extend");
+                });
+            });
+        
+            menuArt.addEventListener("click", function() {
+                this.classList.remove("show"); 
+                menu.classList.remove("extend");
             });
         
             // Languages
@@ -414,26 +522,7 @@
                 document.getElementById("skill-3").textContent = textos[idioma].skill3;
                 document.getElementById("menu").textContent = textos[idioma].menu;
             }
-        
-            // Scroll
-            // document.getElementById("scroll-down").addEventListener("click", function () {
-            //     window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
-            // });
-        
-            // document.getElementById("scroll-up").addEventListener("click", function () {
-            //     window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
-            // });
-        
-            // document.addEventListener("keydown", function (event) {
-            //     if (event.key === "ArrowDown") {
-            //         // Mover hacia abajo 100vh
-            //         window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
-            //     } else if (event.key === "ArrowUp") {
-            //         // Mover hacia arriba 100vh
-            //         window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
-            //     }
-            // });
-        
+
             // Slideshow
             let index = 0;
             const slides = document.querySelectorAll(".carousel-imgs img");
