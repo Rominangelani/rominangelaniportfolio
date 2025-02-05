@@ -7,19 +7,332 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
         <title>Romina Angelani</title>
+
+        <style>
+            *{
+                padding: 0; 
+                margin: 0;
+                font-family: "Silkscreen", serif;
+                font-weight: 400;
+                font-style: normal;
+                scroll-behavior: smooth;
+            }
+        
+            .flex{display: flex;flex-wrap: wrap;}
+            .fc{flex-direction: column;}
+            .fr{flex-direction: row;}
+            .center{align-items: center;justify-content: center;}
+        
+            .body{
+                background: linear-gradient(160deg,#000, #00001a); 
+                background-attachment: fixed;
+                overflow: hidden; 
+                width: 100vw; 
+                height: 100vh;
+            }
+        
+            .canvas-back{
+                position: fixed;
+                z-index: -1;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+            }
+        
+            .header{
+                position: fixed;
+                z-index: 100;
+                padding: 10px;
+                display: flex;
+                text-align: center;
+            }
+        
+            .scroll {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                z-index: 100;
+                bottom: 10px;
+                right: 10px;
+                font-size: clamp(2em,2vw,5em);
+            }
+        
+            .header span, .scroll span{
+                padding: 4px;
+                margin: 4px;
+                color: #fff;
+                background:#000;
+                border: 2px solid #585eff;
+            }
+
+            #scroll-up{border-radius: 10px 0 0 10px;}
+            #scroll-down{border-radius: 0 10px 10px 0;}
+            #español{border-radius: 10px 10px 0 0;}
+            #english{border-radius: 0 0 10px 10px;}
+        
+            .scroll span{padding: 0 4px 6px 4px;}
+        
+            .header span:hover, .scroll span:hover{
+                cursor: pointer;
+                background: #585eff;
+                border: 2px solid #000;
+            }
+        
+            .section-box,.section-slide{
+                position: relative;
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* .section-box {
+                position: relative;
+                width: 100vw;
+                overflow: hidden;
+            } */
+        
+            .presentation-texts-box{
+                width: 80%;
+                max-width: 1300px; 
+                min-width: 250px; 
+                height: 70%;
+                max-height: 700px;
+                min-height: 400px; 
+                padding: 5%;
+                padding: 0 2% 2%;
+                border: 3px solid #21ef80;
+                border-radius: 30px;
+                background: #000;
+            }
+        
+            .name{
+                color: #ff63d8;
+                font-size: clamp(2em, 5vw, 5em);
+                text-align: center;
+                letter-spacing: 1rem;
+                text-shadow: 5px 5px 1px #21ef80;
+            }
+        
+            .hi{
+                margin-top: 10px;
+                color: #fff;
+                font-size: clamp(.8em, 1vw, 2em);
+                text-align: center;
+            }
+        
+            .presentation-btn-box{
+                margin-top: 50px;
+            }
+        
+            .presentation-btn-box a{
+                padding: 5px 10px;
+                margin: 0 20px;
+                font-size: clamp(1.2em, 1.7vw, 2.7em);
+                color: #fff;
+                text-decoration: none;
+                box-shadow: 0 2px 1px 4px #fff;
+                border-radius: 10px;
+            }
+        
+            #skill-1{
+                background: #8488f4;
+                border: 3px solid #585eff;
+                text-shadow: -2px 2px 1px #585eff;
+            }
+        
+            #skill-2{
+                background: #21ef80;
+                border: 3px solid #00c49c;
+                text-shadow: -2px 2px 1px #00c49c;
+            }
+        
+            #skill-3{
+                background: #ff63d8;
+                border: 3px solid #cb34a5;
+                text-shadow: -2px 2px 1px #cb34a5;
+            }
+        
+            .presentation-btn-box a:hover{
+                cursor: pointer;
+            }
+        
+            #skill-1:hover{
+                background: #000;
+                border: 3px solid #8488f4;
+            }
+        
+            #skill-2:hover{
+                background: #000;
+                border: 3px solid #21ef80;
+            }
+        
+            #skill-3:hover{
+                background: #000;
+                border: 3px solid #ff63d8;
+            }
+        
+            #menu{
+                position: fixed;
+                z-index: 100;
+                padding: 4px;
+                bottom: 12px;
+                left: 12px;
+                color: #fff;
+                text-decoration: none;
+                background:#000;
+                border: 2px solid #cb34a5;
+                border-radius: 5px;
+                opacity: 0; 
+                transform: scale(0.5); 
+                transition: opacity 0.3s ease, transform 0.3s ease; 
+                pointer-events: none;
+            }
+        
+            #menu.show {
+                opacity: 1;
+                transform: scale(1); /* Aparece con efecto de crecimiento */
+                pointer-events: auto; /* Hace que sea clickeable */
+            }
+        
+            #menu:hover{
+                cursor: pointer;
+                background: #cb34a5;
+                border: 2px solid #000;
+            }
+        
+            .slideshow-box {
+                position: relative;
+                height: 503.7px;
+                width: 400px;
+                overflow: hidden;
+            }
+
+            .carousel {
+                width: 400px;
+                height: 503.7px;
+                overflow: hidden;
+                position: relative;
+                margin: 0;
+                border: 6px solid #585eff;
+                border-radius: 0 2rem 0 2rem;
+                /* box-shadow: 0 0 1px 6px #585eff55; */
+            }
+
+            .carousel-imgs {
+                display: flex;
+                min-width: 300%;
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .carousel-imgs img {
+                min-width: 400px;
+                min-height: 503.7px;
+            }
+
+            .carousel-btns {
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                transform: translateY(-50%);
+            }
+
+            .carousel-btns span {
+                background: #00000093;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+            .carousel-btns span:hover {
+                background: #000;
+            }
+
+            .prev{padding: 10px 10px 10px 5px; border-radius: 0 10px 10px 0;}
+            .next{padding: 10px 5px 10px 10px; border-radius: 10px 0 0 10px;}
+
+            .art-presentation-box{
+                margin: 0 50px 0 0;
+                padding: 20px;
+                position: relative;
+                width: 40vw;
+                height: auto;
+                border: 3px solid #cb34a5;
+                border-radius: 30px;
+                background: #000;
+            }
+
+            #art-presentation{
+                color: #fff;
+            }
+
+            @media screen and (max-width: 800px) {
+                .presentation-btn-box a {
+                    margin: 20px;
+                }
+                .name{
+                    letter-spacing: 0;
+                }
+                .scroll span{
+                    margin: 2px 10px;
+                }
+                .header, .scroll{
+                    flex-direction: row;
+                }
+                .animation-refs-box{
+                    margin: 60px 0 0 0;
+                    width: 90vw;
+                    height: 100vh;
+                }
+            }
+
+            @media (max-width: 450px) {
+                .carousel {
+                    width: 90vw;
+                    height: 70vh;
+                }
+                .carousel-btns span {
+                    border: none;
+                }
+            }
+
+            #artSlide1, #artSlide2 {
+                position: absolute;
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                transition: transform 0.5s ease-in-out;
+            }
+
+            #artSlide1 {
+                left: 0;
+            }
+
+            #artSlide2 {
+                left: 100vw;
+            }
+
+        </style>
     </head>
     <body class="body">
         <canvas id="starsCanvas" class="canvas-back"></canvas>
         <header class="header flex fc">
-            <span onclick="cambiarIdioma('es')">Español</span>
-            <span onclick="cambiarIdioma('en')">English</span>
+            <span id="español" onclick="cambiarIdioma('es')">Español</span>
+            <span id="english" onclick="cambiarIdioma('en')">English</span>
         </header>
-        <div id="home" class="section-container flex fc center">
-            <div class="presentation-texts-container flex fc center">
+        <div id="home" class="section-box flex fc center">
+            <div class="presentation-texts-box flex fc center">
                 <span id="title" class="name">ROMINA<br>ANGELANI</span>
                 <span id="description" class="hi">¡Un gusto conocerte!</span>
 
-                <div class="presentation-btn-container flex fr center">
+                <div class="presentation-btn-box flex fr center">
                     <a id="skill-1" href="#art">ANIMACIÓN</a>
                     <a id="skill-2" href="#dev">PROGRAMACIÓN</a>
                     <a id="skill-3" href="#lan">TRADUCCIÓN</a>
@@ -27,329 +340,171 @@
             </div>
         </div>
         <a id="menu" href="#home">MENÚ</a>
-        <div id="art" class="section-container flex fc">
-            <div class="art-texts">
-                <!-- 1080 x 1360 -->
-                 
+        <div id="art" class="section-box flex fr center">
+            <div id="artSlide1" class="section-slide flex fc center">
+                <div class="art-presentation-box">
+                    <a href="#artSlide2">
+                    <p id="art-presentation">
+                        Estudio y practico ilustración hace más de 14 años, es una pasión que descubrí a muy temprana edad. A mis 14 años comencé a trasladar todo mi conocimiento al arte digital, aprendiendo, con los años, el uso de diversos programas y herramientas que hoy en día me permiten dedicarme al diseño, la ilustración y la animación de manera proferional. 
+                        <br />
+                        Con experiencia en trabajo desde 2020, tengo varios proyectos realizados que demuestran mis habilidades:
+                    </p>
+                    </a>
+                </div>
+            </div>
+            <div id="artSlide2" class="section-slide flex fc center">
+                <a href="#artSlide1">
+                <div class="carousel">
+                    <div class="carousel-imgs">
+                        <img src="Vegetta.png" alt="Diseño de personaje para redes sociales">
+                        <img src="Staxx.png" alt="Diseño de personaje para redes sociales">
+                        <img src="Alexby.png" alt="Diseño de personaje para redes sociales">
+                    </div>
+                    <div class="carousel-btns">
+                        <span class="prev" onclick="prevSlide()">❮</span>
+                        <span class="next" onclick="nextSlide()">❯</span>
+                    </div>
+                </div>
+                </a>
             </div>
         </div>
-        <div class="footer">
+        <!-- <div class="scroll">
             <span id="scroll-up" class="flex fc center" style="transform: rotate(90deg);">&larr;</span>
             <span id="scroll-down" class="flex fc center" style="transform: rotate(90deg);">&rarr;</span>
-        </div>
+        </div> -->
+
+        <script>
+            // Menu
+            let menu = document.getElementById("menu"); 
+            document.querySelectorAll("#home a").forEach(link => {
+                link.addEventListener("click", function() {
+                    menu.classList.add("show"); 
+                });
+            });
+        
+            menu.addEventListener("click", function() {
+                this.classList.remove("show"); 
+            });
+        
+            // Languages
+            const textos = {
+                es: {
+                    title: "ROMINA ANGELANI",
+                    description: "¡Un gusto conocerte!",
+                    skill1: "ANIMACIÓN",
+                    skill2: "PROGRAMACIÓN",
+                    skill3: "TRADUCCIÓN",
+                    menu: "Menú"
+                },
+                en: {
+                    title: "ROMINA ANGELANI",
+                    description: "Nice to meet you!",
+                    skill1: "ANIMATION",
+                    skill2: "DEVELOPMENT",
+                    skill3: "TRANSLATOR",
+                    menu: "Menu"
+                }
+            };
+        
+            function cambiarIdioma(idioma) {
+                document.getElementById("title").innerHTML = textos[idioma].title.replace(" ", "<br>");
+                document.getElementById("description").textContent = textos[idioma].description;
+                document.getElementById("skill-1").textContent = textos[idioma].skill1;
+                document.getElementById("skill-2").textContent = textos[idioma].skill2;
+                document.getElementById("skill-3").textContent = textos[idioma].skill3;
+                document.getElementById("menu").textContent = textos[idioma].menu;
+            }
+        
+            // Scroll
+            // document.getElementById("scroll-down").addEventListener("click", function () {
+            //     window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+            // });
+        
+            // document.getElementById("scroll-up").addEventListener("click", function () {
+            //     window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
+            // });
+        
+            // document.addEventListener("keydown", function (event) {
+            //     if (event.key === "ArrowDown") {
+            //         // Mover hacia abajo 100vh
+            //         window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+            //     } else if (event.key === "ArrowUp") {
+            //         // Mover hacia arriba 100vh
+            //         window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
+            //     }
+            // });
+        
+            // Slideshow
+            let index = 0;
+            const slides = document.querySelectorAll(".carousel-imgs img");
+            const totalSlides = slides.length;
+            const carousel = document.querySelector(".carousel-imgs");
+
+            function updateCarousel() {
+                carousel.style.transform = `translateX(${-index * 400}px)`;
+            }
+
+            function nextSlide() {
+                index = (index + 1) % totalSlides;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                index = (index - 1 + totalSlides) % totalSlides;
+                updateCarousel();
+            }
+
+            setInterval(nextSlide, 10000); 
+        
+            // Background
+            const canvas = document.getElementById("starsCanvas");
+            const ctx = canvas.getContext("2d");
+        
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        
+            const stars = [];
+            const numStars = 300;
+        
+            // Generar estrellas
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 3 + 2, // Tamaño aleatorio entre 2 y 5
+                    opacity: Math.random() * 0.5 + 0.5, // Opacidad entre 0.5 y 1
+                });
+            }
+        
+            // Dibujar y animar estrellas
+            function drawStars() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let star of stars) {
+                    // Cambiar la opacidad suavemente
+                    star.opacity += (Math.random() - 0.5) * 0.05;
+                    
+                    // Limitar la opacidad entre 0.3 y 1
+                    if (star.opacity > 1) star.opacity = 1;
+                    if (star.opacity < 0.3) star.opacity = 0.3;
+        
+                    // Dibujar estrella cuadrada con opacidad variable
+                    ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                    ctx.fillRect(star.x, star.y, star.size, star.size);
+                }
+        
+                requestAnimationFrame(drawStars);
+            }
+        
+            drawStars();
+        
+            // Ajustar tamaño del canvas si cambia la ventana
+            window.addEventListener("resize", () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        
+        </script>        
     </body>
-    
 </html>
 
-<style>
-    *{
-        padding: 0; 
-        margin: 0;
-        font-family: "Silkscreen", serif;
-        font-weight: 400;
-        font-style: normal;
-        scroll-behavior: smooth;
-    }
-
-    .flex{display: flex;flex-wrap: wrap;}
-    .fc{flex-direction: column;}
-    .fr{flex-direction: row;}
-    .center{align-items: center;justify-content: center;}
-
-    .body{
-        background: linear-gradient(160deg,#000, #00001a); 
-        background-attachment: fixed;
-        overflow: hidden; 
-        width: 100vw; 
-        height: 100vh;
-    }
-
-    .canvas-back{
-        position: fixed;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-    }
-
-    .header{
-        position: fixed;
-        z-index: 100;
-        padding: 10px;
-        display: flex;
-        text-align: center;
-    }
-
-    .footer {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        z-index: 100;
-        bottom: 10px;
-        right: 10px;
-        font-size: clamp(2em,2vw,5em);
-    }
-
-    .header span, .footer span{
-        padding: 4px;
-        margin: 4px;
-        color: #fff;
-        background:#000;
-        border: 2px solid #585eff;
-        border-radius: 5px;
-    }
-
-    .footer span{padding: 0 4px 6px 4px;}
-
-    .header span:hover, .footer span:hover{
-        cursor: pointer;
-        background: #585eff;
-        border: 2px solid #000;
-    }
-
-    .section-container{
-        width: 100vw;
-        height: 100vh;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .presentation-texts-container{
-        width: 80%;
-        max-width: 1300px; 
-        min-width: 250px; 
-        height: 70%;
-        max-height: 700px;
-        min-height: 400px; 
-        padding: 5%;
-        padding: 0 2% 2%;
-        border: 3px solid #21ef80;
-        border-radius: 30px;
-        background: #000;
-    }
-
-    .name{
-        color: #ff63d8;
-        font-size: clamp(2em, 5vw, 5em);
-        text-align: center;
-        letter-spacing: 1rem;
-        text-shadow: 5px 5px 1px #21ef80;
-    }
-
-    .hi{
-        margin-top: 10px;
-        color: #fff;
-        font-size: clamp(.8em, 1vw, 2em);
-        text-align: center;
-    }
-
-    .presentation-btn-container{
-        margin-top: 50px;
-    }
-
-    .presentation-btn-container a{
-        padding: 5px 10px;
-        margin: 0 20px;
-        font-size: clamp(1.2em, 1.7vw, 2.7em);
-        color: #fff;
-        text-decoration: none;
-        box-shadow: 0 2px 1px 4px #fff;
-        border-radius: 10px;
-    }
-
-    #skill-1{
-        background: #8488f4;
-        border: 3px solid #585eff;
-        text-shadow: -2px 2px 1px #585eff;
-    }
-
-    #skill-2{
-        background: #21ef80;
-        border: 3px solid #00c49c;
-        text-shadow: -2px 2px 1px #00c49c;
-    }
-
-    #skill-3{
-        background: #ff63d8;
-        border: 3px solid #cb34a5;
-        text-shadow: -2px 2px 1px #cb34a5;
-    }
-
-    .presentation-btn-container a:hover{
-        cursor: pointer;
-    }
-
-    #skill-1:hover{
-        background: #000;
-        border: 3px solid #8488f4;
-    }
-
-    #skill-2:hover{
-        background: #000;
-        border: 3px solid #21ef80;
-    }
-
-    #skill-3:hover{
-        background: #000;
-        border: 3px solid #ff63d8;
-    }
-
-    #menu{
-        position: fixed;
-        z-index: 100;
-        padding: 4px;
-        bottom: 12px;
-        left: 12px;
-        color: #fff;
-        text-decoration: none;
-        background:#000;
-        border: 2px solid #cb34a5;
-        border-radius: 5px;
-        opacity: 0; 
-        transform: scale(0.5); 
-        transition: opacity 0.3s ease, transform 0.3s ease; 
-        pointer-events: none;
-    }
-
-    #menu.show {
-        opacity: 1;
-        transform: scale(1); /* Aparece con efecto de crecimiento */
-        pointer-events: auto; /* Hace que sea clickeable */
-    }
-
-    #menu:hover{
-        cursor: pointer;
-        background: #cb34a5;
-        border: 2px solid #000;
-    }
-
-    @media screen and (max-width: 800px) {
-        .presentation-btn-container a {
-            margin: 20px;
-        }
-        .name{
-            letter-spacing: 0;
-        }
-        .footer span{
-            margin: 10px;
-        }
-        .header, .footer{
-            flex-direction: row;
-        }
-    }
-</style>
-
-<script>
-    // Menu
-    let menu = document.getElementById("menu"); 
-    document.querySelectorAll("#home a").forEach(link => {
-        link.addEventListener("click", function() {
-            menu.classList.add("show"); 
-        });
-    });
-
-    menu.addEventListener("click", function() {
-        this.classList.remove("show"); 
-    });
-
-    // Languages
-    const textos = {
-        es: {
-            title: "ROMINA ANGELANI",
-            description: "¡Un gusto conocerte!",
-            skill1: "ANIMACIÓN",
-            skill2: "PROGRAMACIÓN",
-            skill3: "TRADUCCIÓN",
-            menu: "Menú"
-        },
-        en: {
-            title: "ROMINA ANGELANI",
-            description: "Nice to meet you!",
-            skill1: "ANIMATION",
-            skill2: "DEVELOPMENT",
-            skill3: "TRANSLATOR",
-            menu: "Menu"
-        }
-    };
-
-    function cambiarIdioma(idioma) {
-        document.getElementById("title").innerHTML = textos[idioma].title.replace(" ", "<br>");
-        document.getElementById("description").textContent = textos[idioma].description;
-        document.getElementById("skill-1").textContent = textos[idioma].skill1;
-        document.getElementById("skill-2").textContent = textos[idioma].skill2;
-        document.getElementById("skill-3").textContent = textos[idioma].skill3;
-        document.getElementById("menu").textContent = textos[idioma].menu;
-    }
-
-    // Scroll
-    document.getElementById("scroll-down").addEventListener("click", function () {
-        window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
-    });
-
-    document.getElementById("scroll-up").addEventListener("click", function () {
-        window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
-    });
-
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "ArrowDown") {
-            // Mover hacia abajo 100vh
-            window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
-        } else if (event.key === "ArrowUp") {
-            // Mover hacia arriba 100vh
-            window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
-        }
-    });
-
-    // Background
-    const canvas = document.getElementById("starsCanvas");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const stars = [];
-    const numStars = 300;
-
-    // Generar estrellas
-    for (let i = 0; i < numStars; i++) {
-        stars.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
-            size: Math.random() * 3 + 2, // Tamaño aleatorio entre 2 y 5
-            opacity: Math.random() * 0.5 + 0.5, // Opacidad entre 0.5 y 1
-        });
-    }
-
-    // Dibujar y animar estrellas
-    function drawStars() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        for (let star of stars) {
-            // Cambiar la opacidad suavemente
-            star.opacity += (Math.random() - 0.5) * 0.05;
-            
-            // Limitar la opacidad entre 0.3 y 1
-            if (star.opacity > 1) star.opacity = 1;
-            if (star.opacity < 0.3) star.opacity = 0.3;
-
-            // Dibujar estrella cuadrada con opacidad variable
-            ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-            ctx.fillRect(star.x, star.y, star.size, star.size);
-        }
-
-        requestAnimationFrame(drawStars);
-    }
-
-    drawStars();
-
-    // Ajustar tamaño del canvas si cambia la ventana
-    window.addEventListener("resize", () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-
-</script>
