@@ -267,7 +267,7 @@
                 font-size: clamp(.8em, 1.2vw, 2em);
             }
 
-            #artSlide1, #artSlide2, #artSlide3 {
+            #artSlide1, #artSlide2, #artSlide3, #artSlide4 {
                 position: absolute;
                 width: 100vw;
                 height: 100vh;
@@ -276,11 +276,13 @@
                 flex-wrap: nowrap;
             }
 
-            #artSlide1 { left: 0; }
+            #artSlide1{ left: 0; }
 
-            #artSlide2 { left: 100vw; }
+            #artSlide2{ left: 100vw; }
 
-            #artSlide3{ left: 200vw }
+            #artSlide3{ left: 200vw; }
+
+            #artSlide4{ left: 300vw; }
 
             .art-item{
                 margin: 3rem 3rem 0;
@@ -441,11 +443,11 @@
                             <span>DISEÑO</span>
                         </a>
                         <a class="art-item art-item-2 flex fc center" href="#artSlide3">
-                            <img src="design-icon.svg" alt="design icon" />
+                            <img src="illustration-icon.svg" alt="design icon" />
                             <span>ILUSTRACIÓN</span>
                         </a>
                         <a class="art-item art-item-3 flex fc center" href="#artSlide4">
-                            <img src="design-icon.svg" alt="design icon" />
+                            <img src="animation-icon.svg" alt="design icon" />
                             <span>ANIMACIÓN</span>
                         </a>
                 </div>
@@ -463,7 +465,8 @@
                     </div>
                 </div>
             </div>
-            <div id="artSlide3" class="flex center"><a href="#artSlide1"><button>SLIDE 1</button></a></div>
+            <div id="artSlide3" class="flex center"><button>SLIDE 3</button></div>
+            <div id="artSlide4" class="flex center"><button>SLIDE 4</button></div>
             <a id="menuArt" href="#artSlide1">VOLVER</a>
         </div>
 
