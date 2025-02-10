@@ -17,6 +17,7 @@
                 font-style: normal;
                 scroll-behavior: smooth;
                 box-sizing: border-box;
+                cursor: default;
             }
         
             .flex{display: flex;flex-wrap: wrap;}
@@ -31,40 +32,6 @@
                 overflow: hidden; 
                 width: 100vw; 
                 height: 100vh;
-            }
-        
-            .canvas-back{
-                position: fixed;
-                z-index: -1;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-            }
-        
-            .header{
-                position: fixed;
-                z-index: 100;
-                padding: 10px;
-                display: flex;
-                text-align: center;
-            }
-        
-            .header span{
-                padding: 4px;
-                margin: 4px;
-                color: #fff;
-                background:#000;
-                border: 2px solid #585eff;
-            }
-
-            #español{border-radius: 10px 10px 0 0;}
-            #english{border-radius: 0 0 10px 10px;}
-        
-            .header span:hover{
-                cursor: pointer;
-                background: #585eff;
-                border: 2px solid #000;
             }
         
             .section-box,.section-slide{
@@ -120,6 +87,7 @@
                 box-shadow: 0 2px 1px 4px #fff;
                 border-radius: 10px;
                 text-align: center;
+                cursor: pointer;
             }
         
             #skill-1, .art-item-1 span{
@@ -138,65 +106,6 @@
                 background: #ff63d8;
                 border: 3px solid #cb34a5;
                 text-shadow: -2px 2px 1px #cb34a5;
-            }
-        
-            .presentation-btn-box a:hover{
-                cursor: pointer;
-            }
-        
-            #skill-1:hover, .art-item-1 span:hover{
-                background: #000;
-                border: 3px solid #8488f4;
-            }
-        
-            #skill-2:hover, .art-item-2 span:hover{
-                background: #000;
-                border: 3px solid #21ef80;
-            }
-        
-            #skill-3:hover, .art-item-3 span:hover{
-                background: #000;
-                border: 3px solid #ff63d8;
-            }
-        
-            #menu, #menuArt{
-                position: fixed;
-                z-index: 100;
-                padding: 4px;
-                bottom: 12px;
-                left: 12px;
-                color: #fff;
-                text-decoration: none;
-                background:#000;
-                border: 2px solid #cb34a5;
-                border-radius: 5px;
-                opacity: 0; 
-                transform: scale(0.5); 
-                transition: opacity 0.3s ease, transform 0.3s ease; 
-                pointer-events: none;
-            }
-
-            #menuArt{
-                border-radius: 10px 10px 0 0;
-                bottom: 54px;
-            }
-        
-            #menu.show, #menuArt.show{
-                opacity: 1;
-                transform: scale(1);
-                pointer-events: auto; 
-            }
-        
-            #menu:hover, #menuArt:hover{
-                cursor: pointer;
-                background: #cb34a5;
-                border: 2px solid #000;
-            }
-
-            #menu.extend{
-                width: 84px;
-                border-radius: 0 0 10px 10px;
-                transition: width .3s;
             }
         
             .slideshow-box {
@@ -228,6 +137,25 @@
                 min-height: 503.7px;
             }
 
+            .carousel-item {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .carousel-text {
+                color: #fff;
+                background: #585eff;
+                font-size: 12px;
+                text-align: center;
+                width: 100%;
+                height: auto;
+                padding: 5px 0;
+                position: absolute;
+                bottom: 16px;
+            }
+
             .carousel-btns {
                 position: absolute;
                 top: 50%;
@@ -251,7 +179,7 @@
             .prev{padding: 10px 10px 10px 5px; border-radius: 0 10px 10px 0;}
             .next{padding: 10px 5px 10px 10px; border-radius: 10px 0 0 10px;}
 
-            .art-presentation-box{
+            .art-presentation-box, .art-slide2-presentation-box{
                 margin: 0;
                 padding: 20px;
                 position: relative;
@@ -262,12 +190,17 @@
                 background: #000;
             }
 
-            #art-presentation{
+            #art-presentation, .art-slide2-presentation{
                 color: #fff;
                 font-size: clamp(.8em, 1.2vw, 2em);
             }
 
-            #artSlide1, #artSlide2, #artSlide3, #artSlide4 {
+            .art-slide2-presentation-box{
+                width: 40vw;
+                margin: 0 3rem 0 0;
+            }
+
+            #artSlide1, #artSlide2 {
                 position: absolute;
                 width: 100vw;
                 height: 100vh;
@@ -278,11 +211,11 @@
 
             #artSlide1{ left: 0; }
 
-            #artSlide2{ left: 100vw; }
+            #artSlide2{ left: 100vw; flex-direction: row; }
 
-            #artSlide3{ left: 200vw; }
-
-            #artSlide4{ left: 300vw; }
+            .apps-box{
+                margin-top: 1rem;
+            }
 
             .art-item{
                 margin: 3rem 3rem 0;
@@ -297,56 +230,40 @@
             .art-item img{
                 height: 100px;
                 width: auto;
-            }
-
-            .art-item-1 img{
                 filter: drop-shadow(0 0 5px #cb34a5);
-                animation: float1 5s ease-in-out infinite alternate;
             }
 
-            @keyframes float1 {
-                0% {
-                    transform: translateY(0) rotate(0deg);
-                }
-                50% {
-                    transform: translateY(-10px) rotate(2deg);
-                }
-                100% {
-                    transform: translateY(0) rotate(0deg);
-                }
+            apps-box{
+                margin-top: 1rem;
             }
 
-            .art-item-2 img{
-                filter: drop-shadow(0 0 5px #cb34a5);
-                animation: float2 4s ease-in-out infinite alternate;
+            .apps-box img{
+                width: 2rem;
+                height: auto;
+                filter: invert(100%) drop-shadow(0 0 2.5px #cb34a5);
+                margin-right: .5rem;
             }
 
-            @keyframes float2 {
-                0% {
-                    transform: translateY(-10px) rotate(3deg); 
-                }
-                50% {
-                    transform: translateY(0) rotate(0deg);
-                }
-                100% {
-                    transform: translateY(-12px) rotate(2deg); 
-                }
+            .app-box{
+                margin: .6rem;
+                color: #cb34a5;
             }
 
-            .art-item-3 img{
-                filter: drop-shadow(0 0 5px #cb34a5);
-                animation: float3 4.5s ease-in-out infinite alternate;
+            .app-box span{
+                text-shadow: none;
+                transition: all .3s;
             }
 
-            @keyframes float3 {
-                0% {
-                    transform: translateY(0) rotate(1deg);
+            @media screen and (max-width: 940px) {
+                #artSlide2{
+                    flex-direction: column;
+                    height: 200vh;
+                    overflow-y: auto;
+                    -webkit-overflow-scrolling: touch;
                 }
-                50% {
-                    transform: translateY(-12px) rotate(-2deg);
-                }
-                100% {
-                    transform: translateY(0) rotate(0deg);
+                .art-slide2-presentation-box{
+                    width: 80vw;
+                    margin: 1rem 0;
                 }
             }
 
@@ -372,7 +289,6 @@
                     border-radius: 10px 0 0 10px;
                 }
                 .art-presentation-box{
-                    /* margin: 10vh 10vw 10vh 10vw; */
                     padding: 15px;
                     width: 85vw;
                     height: auto;
@@ -396,7 +312,7 @@
                     height: auto;
                 }
                 .art-item{
-                    margin: 1.5rem .5rem;
+                    margin: 1.5rem .3rem;
                 }
                 .art-item span{
                     margin: 1rem 0 0;
@@ -410,18 +326,13 @@
         </style>
     </head>
     <body class="body">
-        <canvas id="starsCanvas" class="canvas-back"></canvas>
-        <header class="header flex fc">
-            <span id="español" onclick="cambiarIdioma('es')">Español</span>
-            <span id="english" onclick="cambiarIdioma('en')">English</span>
-        </header>
         <div id="home" class="section-box flex fc center">
             <div class="presentation-texts-box flex fc center">
                 <span id="title" class="name">ROMINA<br>ANGELANI</span>
                 <span id="description" class="hi">¡Un gusto conocerte!</span>
 
                 <div class="presentation-btn-box flex fr center">
-                    <a id="skill-1" href="#art">ANIMACIÓN</a>
+                    <a id="skill-1" href="#artSlide1">ANIMACIÓN</a>
                     <a id="skill-2" href="#dev">PROGRAMACIÓN</a>
                     <a id="skill-3" href="#lan">TRADUCCIÓN</a>
                 </div>
@@ -452,80 +363,67 @@
                         </a>
                 </div>
             </div>
-            <div id="artSlide2" class="section-slide flex fc center">
+            <div id="artSlide2" class="section-slide flex fr center">
+                <div class="art-slide2-presentation-box flex fc">
+                    <p class="art-slide2-presentation">
+                        A lo largo de 6 años aprendí a usar de manera profesional diversos programas, de altos y bajos recursos, especializados y generales, como:
+                        <div class="apps-box flex fr center">
+                            <div class="app-box flex fr center">
+                                <img src="ps-ps-svgrepo-com.svg" alt="Photoshop logo" />
+                                <span>Photoshop</span>
+                            </div>
+                            <div class="app-box flex fr center">
+                                <img src="ai-ai-svgrepo-com.svg" alt="Photoshop logo" />
+                                <span>Adobde Illustrator</span>
+                            </div>
+                            <div class="app-box flex fr center">
+                                <img src="figma-logo-thin-svgrepo-com.svg" alt="Photoshop logo" />
+                                <span>Figma</span>
+                            </div>
+                            <div class="app-box flex fr center">
+                                <img src="sketchbook-svgrepo-com.svg" alt="Photoshop logo" />
+                                <span>Autodesk Sketchbook</span>
+                            </div>
+                            <div class="app-box flex fr center">
+                                <img src="krita-svgrepo-com.svg" alt="Photoshop logo" />
+                                <span>Krita</span>
+                            </div>
+                            <div class="app-box flex fr center">
+                                <img src="procreate-logo.svg" alt="Photoshop logo" />
+                                <span>Procreate Dreams</span>
+                            </div>
+                            <div class="app-box flex fr center">
+                                <img src="blender-svgrepo-com.svg" alt="Photoshop logo" />
+                                <span>blender</span>
+                            </div>
+                        </div>
+                    </p>
+                </div>
                 <div class="carousel">
                     <div class="carousel-imgs">
-                        <img src="Vegetta.png" alt="Diseño de personaje para redes sociales">
-                        <img src="Staxx.png" alt="Diseño de personaje para redes sociales">
-                        <img src="Alexby.png" alt="Diseño de personaje para redes sociales">
-                    </div>
+                        <div class="carousel-item">
+                            <img src="darume-black.png" alt="Diseño de identidad de marca">
+                            <span class="carousel-text">Diseño de identidad de marca</span>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="darume-white.png" alt="Diseño de identidad de marca">
+                            <span class="carousel-text">Diseño de identidad de marca</span>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="rollingoffargentina-logo.png" alt="Diseño de logo para empresa">
+                            <span class="carousel-text">Diseños de logos para empresa</span>
+                        </div>
+                    </div>                    
                     <div class="carousel-btns">
                         <span class="prev" onclick="prevSlide()">❮</span>
                         <span class="next" onclick="nextSlide()">❯</span>
                     </div>
                 </div>
             </div>
-            <div id="artSlide3" class="flex center"><button>SLIDE 3</button></div>
-            <div id="artSlide4" class="flex center"><button>SLIDE 4</button></div>
             <a id="menuArt" href="#artSlide1">VOLVER</a>
         </div>
 
         <script>
-            // Menu
-            let menu = document.getElementById("menu"); 
-            document.querySelectorAll("#home a").forEach(link => {
-                link.addEventListener("click", function() {
-                    menu.classList.add("show"); 
-                });
-            });
-        
-            menu.addEventListener("click", function() {
-                this.classList.remove("show"); 
-            });
-
-            // Menu art
-            let menuArt = document.getElementById("menuArt"); 
-            document.querySelectorAll("#artProjects .art-item").forEach(link => {
-                link.addEventListener("click", function() {
-                    menuArt.classList.add("show"); 
-                    menu.classList.add("extend");
-                });
-            });
-        
-            menuArt.addEventListener("click", function() {
-                this.classList.remove("show"); 
-                menu.classList.remove("extend");
-            });
-        
-            // Languages
-            const textos = {
-                es: {
-                    title: "ROMINA ANGELANI",
-                    description: "¡Un gusto conocerte!",
-                    skill1: "ANIMACIÓN",
-                    skill2: "PROGRAMACIÓN",
-                    skill3: "TRADUCCIÓN",
-                    menu: "Menú"
-                },
-                en: {
-                    title: "ROMINA ANGELANI",
-                    description: "Nice to meet you!",
-                    skill1: "ANIMATION",
-                    skill2: "DEVELOPMENT",
-                    skill3: "TRANSLATOR",
-                    menu: "Menu"
-                }
-            };
-        
-            function cambiarIdioma(idioma) {
-                document.getElementById("title").innerHTML = textos[idioma].title.replace(" ", "<br>");
-                document.getElementById("description").textContent = textos[idioma].description;
-                document.getElementById("skill-1").textContent = textos[idioma].skill1;
-                document.getElementById("skill-2").textContent = textos[idioma].skill2;
-                document.getElementById("skill-3").textContent = textos[idioma].skill3;
-                document.getElementById("menu").textContent = textos[idioma].menu;
-            }
-
             // Slideshow
             let index = 0;
             const slides = document.querySelectorAll(".carousel-imgs img");
@@ -546,56 +444,7 @@
                 updateCarousel();
             }
 
-            setInterval(nextSlide, 10000); 
-        
-            // Background
-            const canvas = document.getElementById("starsCanvas");
-            const ctx = canvas.getContext("2d");
-        
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        
-            const stars = [];
-            const numStars = 300;
-        
-            // Generar estrellas
-            for (let i = 0; i < numStars; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 3 + 2, // Tamaño aleatorio entre 2 y 5
-                    opacity: Math.random() * 0.5 + 0.5, // Opacidad entre 0.5 y 1
-                });
-            }
-        
-            // Dibujar y animar estrellas
-            function drawStars() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                for (let star of stars) {
-                    // Cambiar la opacidad suavemente
-                    star.opacity += (Math.random() - 0.5) * 0.05;
-                    
-                    // Limitar la opacidad entre 0.3 y 1
-                    if (star.opacity > 1) star.opacity = 1;
-                    if (star.opacity < 0.3) star.opacity = 0.3;
-        
-                    // Dibujar estrella cuadrada con opacidad variable
-                    ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-                    ctx.fillRect(star.x, star.y, star.size, star.size);
-                }
-        
-                requestAnimationFrame(drawStars);
-            }
-        
-            drawStars();
-        
-            // Ajustar tamaño del canvas si cambia la ventana
-            window.addEventListener("resize", () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-        
+            setInterval(nextSlide, 20000); 
         </script>        
     </body>
 </html>
