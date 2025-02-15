@@ -6,6 +6,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="icon" href="logo.png" type="image/png">
         <name>Romina Angelani</name>
 
         <style>
@@ -229,7 +230,7 @@
                 margin: 5rem 0;
             }
 
-            #line4{
+            #desc-line4{
                  width: 40vw; 
                  padding: 1rem;
             }
@@ -237,7 +238,7 @@
             .iframe{
                 width: 546px;
                 height: 307px;
-                margin: 3rem;
+                margin: 1rem 3rem;
             }
 
             iframe{
@@ -304,6 +305,17 @@
             .prev{padding: 10px 10px 10px 5px; border-radius: 0 10px 10px 0;}
             .next{padding: 10px 5px 10px 10px; border-radius: 10px 0 0 10px;}
 
+            #desc-line6{
+                padding: 1rem 3rem;
+                width: 100vw;
+                height: auto;
+                color: #fff;
+                background: #000;
+                border-top: 3px solid #cb34a5;
+            }
+
+            #desc-line6 a{color: #00c49c; text-shadow: 0 0 5px #585eff;}
+
             @media screen and (max-width: 900px) {
                 .title{position:relative; top: .5rem;}
                 #name{font-size: 2rem;}
@@ -315,13 +327,13 @@
             }
 
             @media screen and (max-width: 826px){
-                #line4{
+                #desc-line4{
                     width: 90vw;
                 }
             }
 
             @media screen and (max-width:516px){
-                .iframe{width: 400px;height: 225px;}
+                .iframe{width: 400px;height: 225px; margin: 3rem;}
             }
 
             @media (max-width: 450px) {
@@ -351,7 +363,7 @@
 
         <div class="content-box flex center wrap">
             <div class="description">
-                <span id="desc-line1">Desarrollé este sencillo portfolio web para que conozcas mis habilidades en:</span>
+                <span id="desc-line1">Desarrollé este sencillo portfolio web para que conozcas un poco de mis habilidades en:</span>
             </div>
             <div class="flex fr center wrap" style="margin: 1rem 0;">
                 <a href="#skills"> 
@@ -500,11 +512,17 @@
                         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/BE2U7Y9avhs?si=oygMGX4Sa5PDBNff" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
 
-                    <div id="line4" class="description">
-                        En el carrousel puedes ver algunas pequeñas muestras de mis trabajos (también puedes ver más sobre ellos en los link de la sección de empresas y emprendimientos arriba). 
+                    <div id="desc-line4" class="description">
+                        <span id="line4">En el carrusel puedes ver algunas pequeñas muestras de mis trabajos (también puedes ver más sobre ellos en los link de la sección de empresas y emprendimientos arriba).</span>
                         <br><br>
-                        En el video adjunto tienes a mi propio proyecto personal, el capítulo piloto de una serie animada.
+                        <span id="line5">En el video adjunto tienes a mi propio proyecto personal, el capítulo piloto de una serie animada dirigida por mí y producida por un pequeño equipo que formé a lo largo de 2 años.</span>
                     </div>
+                </div>
+            </div>
+
+            <div class="flex fc center">
+                <div id="desc-line6" class="footer">
+                    Te dejo las <a target='_blank' href='https://t.co/8N3sUfbTBK'>redes sociales de mi proyecto personal</a> para que puedas investigar mejor sobre este y todo lo que soy capaz en animación, dirección y producción; y <a href='mailto:rominangelani@gmail.com'>mi mail</a> por si te interesa coordinar una entrevista para que te cuente más sobre mi experiencia y habilidades."
                 </div>
             </div>
         </div>
@@ -515,10 +533,12 @@
                 es: {
                     HMNI: "¡Hola! Me llamo...",
                     NTMY: "¡Un gusto conocerte!",
-                    line1: "Desarrollé este sencillo portfolio web para que conozcas mis habilidades en:",
+                    line1: "Desarrollé este sencillo portfolio web para que conozcas un poco de mis habilidades en:",
                     line2: "A lo largo de 6 años aprendí a usar de manera profesional diversos programas, plataformas y herramientas, de altos y bajos recursos, especializados y generales, como:",
                     line3: "Con experiencia en trabajo desde 2020 en empresas y emprendimientos:",
-                    line4: "A la izquierda puedes ver algunas pequeñas muestras de mis habilidades. A la derecha tienes a mi propio proyecto personal, el capítulo piloto de una serie animada.",
+                    line4: " En el carrusel puedes ver algunas pequeñas muestras de mis trabajos (también puedes ver más sobre ellos en los link de la sección de empresas y emprendimientos arriba).",
+                    line5: "En el video adjunto tienes a mi propio proyecto personal, el capítulo piloto de una serie animada dirigida por mí y producida por un pequeño equipo que formé a lo largo de 2 años.",
+                    line6: "Te dejo las <a target='_blank' href='https://t.co/8N3sUfbTBK'>redes sociales de mi proyecto personal</a> para que puedas investigar mejor sobre este y todo lo que soy capaz en animación, dirección y producción; y <a href='mailto:rominangelani@gmail.com'>mi mail</a> por si te interesa coordinar una entrevista para que te cuente más sobre mi experiencia y habilidades.",
                     des: "DISEÑO",
                     ilu: "ILUSTRACIÓN",
                     ani: "ANIMACIÓN",
@@ -527,10 +547,12 @@
                 en: {
                     HMNI: "Hi! My name is...",
                     NTMY: "Nice to meet you!",
-                    line1: "I developed this simple website so you can learn about my skills in:",
+                    line1: "I developed this simple web portfolio so you can learn a little about my skills in:",
                     line2: "Over 6 years I learned to professionally use various programs, platforms and tools, high and low resources, specialized and general, such as:",
                     line3: "With work experience since 2020 in companies and ventures:",
-                    line4: "On the left you can see some small samples of my skills. On the right you have my own personal project, the pilot episode of an animated series.",
+                    line4: "In the carousel you can see some small samples of my work (you can also see more about them in the links in the companies and ventures section above).",
+                    line5: "In the attached video you have my own personal project, the pilot episode of an animated series directed by me and produced by a small team that I formed over 2 years.",
+                    line6: "Here I leave you the <a target='_blank' href='https://t.co/8N3sUfbTBK'>social networks of my personal project</a> so that you can better investigate it and everything I am capable of in animation, direction and production; and <a href='mailto:rominangelani@gmail.com'>my email</a> in case you are interested in coordinating an interview so that I can tell you more about my experience and skills.",
                     des: "DESIGN",
                     ilu: "ILLUSTRATION",
                     ani: "ANIMATION",
@@ -544,6 +566,9 @@
                 document.getElementById("desc-line1").textContent = textos[idioma].line1;
                 document.getElementById("desc-line2").textContent = textos[idioma].line2;
                 document.getElementById("desc-line3").textContent = textos[idioma].line3;
+                document.getElementById("line4").textContent = textos[idioma].line4;
+                document.getElementById("line5").textContent = textos[idioma].line5;
+                document.getElementById("desc-line6").innerHTML = textos[idioma].line6;
                 document.getElementById("des").textContent = textos[idioma].des;
                 document.getElementById("ilu").textContent = textos[idioma].ilu;
                 document.getElementById("ani").textContent = textos[idioma].ani;
@@ -583,15 +608,13 @@
             const numStars = 200;
             let shootingStars = [];
 
-            // Colores permitidos para las estrellas
             const starColors = ["#FFFFFF", "#21EF80", "#FFFFFF", "#FF63D8", "#FFFFFF", "#8488F4", "#FFFFFF"];
 
-            // Crear estrellas
             for (let i = 0; i < numStars; i++) {
                 stars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    size: Math.random() * 2 + 1, // Tamaño más pequeño
+                    size: Math.random() * 2 + 1,
                     alpha: Math.random() * 0.5 + 0.5,
                     delta: Math.random() * 0.02,
                     speedX: (Math.random() - 0.5) * 0.2,
@@ -600,46 +623,37 @@
                 });
             }
 
-            // Dibujar estrellas
             function drawStars() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                 for (let star of stars) {
                     drawBrillo(star.x, star.y, star.size, star.color, star.alpha);
 
-                    // Efecto de parpadeo
                     star.alpha += star.delta;
                     if (star.alpha >= 1 || star.alpha <= 0.3) {
                         star.delta *= -1;
                     }
 
-                    // Movimiento sutil
                     star.x += star.speedX;
                     star.y += star.speedY;
 
-                    // Reposicionar si salen de pantalla
                     if (star.x < 0) star.x = canvas.width;
                     if (star.x > canvas.width) star.x = 0;
                     if (star.y < 0) star.y = canvas.height;
                     if (star.y > canvas.height) star.y = 0;
                 }
 
-                // Dibujar estrellas fugaces
                 for (let i = 0; i < shootingStars.length; i++) {
                     let star = shootingStars[i];
 
-                    // Dibujar la estela más larga e intensa
                     drawTrail(star.x, star.y, star.size, star.alpha);
 
-                    // Dibujar la estrella fugaz
                     drawBrillo(star.x, star.y, star.size * 2, "#FFFFFF", star.alpha);
 
-                    // Movimiento
                     star.x += star.speedX;
                     star.y += star.speedY;
-                    star.alpha -= 0.008; // Desvanecimiento suave
+                    star.alpha -= 0.008;
 
-                    // Eliminar cuando se desvanece completamente
                     if (star.alpha <= 0) {
                         shootingStars.splice(i, 1);
                         i--;
@@ -649,13 +663,11 @@
                 requestAnimationFrame(drawStars);
             }
 
-            // Función para dibujar brillos ✨
             function drawBrillo(x, y, size, color, alpha) {
                 ctx.save();
                 ctx.translate(x, y);
                 ctx.beginPath();
 
-                // Brillo en forma de rombo curvado hacia adentro
                 ctx.moveTo(0, -size);
                 ctx.quadraticCurveTo(-size * 0.3, -size * 0.3, -size, 0);
                 ctx.quadraticCurveTo(-size * 0.3, size * 0.3, 0, size);
@@ -664,15 +676,13 @@
 
                 ctx.fillStyle = `rgba(${hexToRgb(color)}, ${alpha})`;
 
-                // Efecto de brillo
-                ctx.shadowBlur = 15; // Brillo más intenso
+                ctx.shadowBlur = 15;
                 ctx.shadowColor = color;
 
                 ctx.fill();
                 ctx.restore();
             }
 
-            // Dibujar la estela de la estrella fugaz (más larga e intensa)
             function drawTrail(x, y, size, alpha) {
                 let gradient = ctx.createLinearGradient(x - size * 10, y - size * 10, x, y);
                 gradient.addColorStop(0, `rgba(255, 255, 255, 0)`);
@@ -686,27 +696,24 @@
                 ctx.fill();
             }
 
-            // Crear estrellas fugaces con estela más larga
             function createShootingStar() {
                 shootingStars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height * 0.5,
                     size: Math.random() * 2 + 1,
-                    speedX: Math.random() * 10 + 5, // Velocidad más alta
+                    speedX: Math.random() * 10 + 5, 
                     speedY: Math.random() * 5 + 2,
                     alpha: 1
                 });
 
-                setTimeout(createShootingStar, Math.random() * 4000 + 2000); // Más frecuentes
+                setTimeout(createShootingStar, Math.random() * 4000 + 2000); 
             }
 
-            // Convertir HEX a RGB
             function hexToRgb(hex) {
                 let bigint = parseInt(hex.substring(1), 16);
                 return `${(bigint >> 16) & 255}, ${(bigint >> 8) & 255}, ${bigint & 255}`;
             }
 
-            // Ajustar tamaño del canvas cuando cambia la ventana
             window.addEventListener("resize", () => {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
