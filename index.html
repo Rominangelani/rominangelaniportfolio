@@ -89,8 +89,7 @@
             .content-box{width: 100vw; height: auto;}
 
             .description{
-                margin: 3%;
-                padding: 1%;
+                padding: 1rem;
                 color: #fff;
                 max-width: 80vw;
                 background: #000;
@@ -130,6 +129,10 @@
             .green:hover{ box-shadow: 0 0 0 1px #00c49c; }
             .pink:hover{ box-shadow: 0 0 0 1px #cb34a5; }
 
+            .skills-box{margin-bottom: 5rem;}
+
+            .skill-box span{font-size: 1.1rem;}
+
             .skill a{color:#fff; font-size: 12px; text-shadow:none}
         
             .slideshow-box {
@@ -140,14 +143,13 @@
             }
 
             .icon{
-                margin: 0 0 4rem;
+                margin: 4rem .5rem 4rem 0;
                 height: 120px;
                 width: auto;
                 filter: drop-shadow(0 0 2.5px #cb34a5);
-                margin-right: .5rem;
             }
 
-            .icon-1{ animation: float1 5s ease-in-out infinite alternate; }
+            .icon-1{animation: float1 5s ease-in-out infinite alternate;}
 
             @keyframes float1 {
                 0% {
@@ -200,6 +202,8 @@
                 }
             }
 
+            .apps-box{margin: 1.5rem 0;}
+
             .apps-box img{
                 width: 2rem;
                 height: auto;
@@ -217,18 +221,14 @@
                 transition: all .3s;
             }
 
-            .jobs-box span{
-                margin: 1rem;
-            }
+            .jobs-box span{margin: 1rem;}
 
             .app-box span:hover{
                 text-shadow: 0 0 2.5px #cb34a5;
                 transition: all .3s;
             }
 
-            .projects-box{
-                margin: 5rem 0;
-            }
+            .projects-box{margin: 5rem 0;}
 
             #desc-line4{
                  width: 40vw; 
@@ -262,9 +262,9 @@
                 transition: transform 0.5s ease-in-out;
             }
 
-            .carousel-imgs img {
-                min-width: 400px;
-                min-height: 503.7px;
+            .carousel-imgs img{
+                max-width: 400px;
+                max-height: 503.7px;
             }
 
             .carousel-item {
@@ -327,20 +327,20 @@
             }
 
             @media screen and (max-width: 826px){
-                #desc-line4{
-                    width: 90vw;
-                }
+                #desc-line4{width: 90vw;}
             }
 
             @media screen and (max-width:516px){
-                .iframe{width: 400px;height: 225px; margin: 3rem;}
+                .iframe{width: 330px;height: 186px; margin: 3rem;}
             }
 
             @media (max-width: 450px) {
+                .title{top: 1rem;}
                 #name{font-size: 1rem;}
                 .description{width: 90vw;}
                 .carousel{width: 90vw; height: 70vh;}
                 .carousel-btns span{border: none;}
+                .carousel-imgs img{width: 330px;height: 416px;}
             }
         </style>
     </head>
@@ -362,10 +362,10 @@
         </div>
 
         <div class="content-box flex center wrap">
-            <div class="description">
+            <div class="description" style="margin:1.5rem 0">
                 <span id="desc-line1">Desarrollé este sencillo portfolio web para que conozcas un poco de mis habilidades en:</span>
             </div>
-            <div class="flex fr center wrap" style="margin: 1rem 0;">
+            <div class="skills-box flex fr center wrap">
                 <a href="#skills"> 
                     <div class="skill-box flex fc center">
                         <img class="icon icon-1" src="design-icon.svg" alt="design icon" />
@@ -394,7 +394,7 @@
 
             <div class="description" id="skills">
                 <span id="desc-line2">A lo largo de 6 años aprendí a usar de manera profesional diversos programas, plataformas y herramientas, de altos y bajos recursos, especializados y generales, como:</span>
-                <div class="apps-box flex fr center wrap" style="margin: 1rem 0;">
+                <div class="apps-box flex fr center wrap">
                     <div class="app-box flex fr center">
                         <img src="ps-ps-svgrepo-com.svg" alt="Photoshop logo" />
                         <span>Photoshop</span>
@@ -457,7 +457,7 @@
                     </div>
                 </div>
                 <span id="desc-line3">Con experiencia en trabajo desde 2020 en empresas y emprendimientos:</span>
-                <div class="apps-box jobs-box flex fr center wrap" style="margin: 1rem 0;">
+                <div class="apps-box jobs-box flex fr center wrap">
                     <span class="pink skill">
                         STUKA RACUDA<br />
                         <a href="https://www.stuka-racuda.com/">stuka-racuda.com</a>
@@ -521,7 +521,7 @@
             </div>
 
             <div class="flex fc center">
-                <div id="desc-line6" class="footer">
+                <div id="desc-line6">
                     Te dejo las <a target='_blank' href='https://t.co/8N3sUfbTBK'>redes sociales de mi proyecto personal</a> para que puedas investigar mejor sobre este y todo lo que soy capaz en animación, dirección y producción; y <a href='mailto:rominangelani@gmail.com'>mi mail</a> por si te interesa coordinar una entrevista para que te cuente más sobre mi experiencia y habilidades."
                 </div>
             </div>
@@ -608,6 +608,7 @@
             const numStars = 200;
             let shootingStars = [];
 
+
             const starColors = ["#FFFFFF", "#21EF80", "#FFFFFF", "#FF63D8", "#FFFFFF", "#8488F4", "#FFFFFF"];
 
             for (let i = 0; i < numStars; i++) {
@@ -676,7 +677,7 @@
 
                 ctx.fillStyle = `rgba(${hexToRgb(color)}, ${alpha})`;
 
-                ctx.shadowBlur = 15;
+                ctx.shadowBlur = 15; 
                 ctx.shadowColor = color;
 
                 ctx.fill();
