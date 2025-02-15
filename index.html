@@ -6,7 +6,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
-        <title>Romina Angelani</title>
+        <name>Romina Angelani</name>
 
         <style>
             *{
@@ -18,101 +18,231 @@
                 scroll-behavior: smooth;
                 box-sizing: border-box;
                 cursor: default;
+                user-select: none;
             }
         
-            .flex{display: flex;flex-wrap: wrap;}
+            .flex{display: flex;}
             .fc{flex-direction: column;}
             .fr{flex-direction: row;}
+            .wrap{flex-wrap: wrap;}
             .center{align-items: center;justify-content: center;}
-            .body a{text-decoration: none;}
+            body a{text-decoration: none; cursor: pointer;}
+            .absolute{position: absolute;}
         
-            .body{
+            body{
                 background: linear-gradient(160deg,#000, #00001a); 
                 background-attachment: fixed;
-                overflow: hidden; 
+                overflow-x: hidden; 
                 width: 100vw; 
                 height: 100vh;
             }
         
-            .section-box,.section-slide{
-                position: relative;
+            .canvas-back{
+                position: fixed;
+                z-index: -1;
+                top: 0;
+                left: 0;
                 width: 100vw;
                 height: 100vh;
-                overflow: hidden;
-                padding: 0;
-                margin: 0;
+            }
+        
+            .header{
+                position: fixed;
+                left: 1rem;
+                z-index: 100;
                 display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-        
-            .presentation-texts-box{
-                width: 80%;
-                max-width: 1300px; 
-                min-width: 250px; 
-                height: auto;
-                max-height: 700px;
-                min-height: 400px; 
-                padding: 4% 2% 6.5% 2%;
-                border: 3px solid #21ef80;
-                border-radius: 30px;
-                background: #000;
-            }
-        
-            .name{
-                color: #ff63d8;
-                font-size: clamp(2em, 5vw, 5em);
                 text-align: center;
-                letter-spacing: 1rem;
-                text-shadow: 5px 5px 1px #21ef80;
             }
         
-            .hi{
-                margin-top: 10px;
+            .header span{
+                padding: 4px;
                 color: #fff;
-                font-size: clamp(.8em, 1vw, 2em);
+                background:#000;
+                border: 2px solid #585eff;
+            }
+
+            #español{border-radius: 10px 10px 0 0;}
+            #english{border-radius: 0 0 10px 10px;}
+        
+            .header span:hover{
+                cursor: pointer;
+                background: #585eff;
+                border: 2px solid #000;
+            }
+
+            .title{
+                width: 100%;
+                top: .5rem;
+            }
+        
+            #name{
+                color: #ff63d8;
+                font-size: 3rem;
                 text-align: center;
+                text-shadow: 3px 3px 1px #21ef80;
+                line-height: 2.4rem;
+            }
+
+            .title-line{color: #fff;}
+
+            .content-box{width: 100vw; height: auto;}
+
+            .description{
+                margin: 3%;
+                padding: 1%;
+                color: #fff;
+                max-width: 80vw;
+                background: #000;
+                border: 3px solid #cb34a5;
+                border-radius: 30px;
             }
         
-            .presentation-btn-box{
-                margin-top: 50px;
-            }
-        
-            .presentation-btn-box a, .art-item span{
-                padding: 5px 10px;
-                margin: 0 20px;
-                font-size: clamp(1.2em, 1.7vw, 2.7em);
+            .skill{
+                padding: .2%;
+                font-size: 1.3rem;
                 color: #fff;
                 text-decoration: none;
-                box-shadow: 0 2px 1px 4px #fff;
+                box-shadow: 0 0 0 1px #000;
                 border-radius: 10px;
                 text-align: center;
-                cursor: pointer;
             }
         
-            #skill-1, .art-item-1 span{
+            .viol{
                 background: #8488f4;
-                border: 3px solid #585eff;
+                border: 2px solid #585eff;
                 text-shadow: -2px 2px 1px #585eff;
             }
         
-            #skill-2, .art-item-2 span{
+            .green{
                 background: #21ef80;
-                border: 3px solid #00c49c;
+                border: 2px solid #00c49c;
                 text-shadow: -2px 2px 1px #00c49c;
             }
         
-            #skill-3, .art-item-3 span{
+            .pink{
                 background: #ff63d8;
-                border: 3px solid #cb34a5;
+                border: 2px solid #cb34a5;
                 text-shadow: -2px 2px 1px #cb34a5;
             }
+
+            .viol:hover{ box-shadow: 0 0 0 1px #585eff; }
+            .green:hover{ box-shadow: 0 0 0 1px #00c49c; }
+            .pink:hover{ box-shadow: 0 0 0 1px #cb34a5; }
+
+            .skill a{color:#fff; font-size: 12px; text-shadow:none}
         
             .slideshow-box {
                 position: relative;
                 height: 503.7px;
                 width: 400px;
                 overflow: hidden;
+            }
+
+            .icon{
+                margin: 0 0 4rem;
+                height: 120px;
+                width: auto;
+                filter: drop-shadow(0 0 2.5px #cb34a5);
+                margin-right: .5rem;
+            }
+
+            .icon-1{ animation: float1 5s ease-in-out infinite alternate; }
+
+            @keyframes float1 {
+                0% {
+                    transform: translateY(0) rotate(0deg);
+                }
+                50% {
+                    transform: translateY(-10px) rotate(2deg);
+                }
+                100% {
+                    transform: translateY(0) rotate(0deg);
+                }
+            }
+
+            .icon-2{ animation: float2 4s ease-in-out infinite alternate; }
+
+            @keyframes float2 {
+                0% {
+                    transform: translateY(-10px) rotate(3deg); 
+                }
+                50% {
+                    transform: translateY(0) rotate(0deg);
+                }
+                100% {
+                    transform: translateY(-12px) rotate(2deg); 
+                }
+            }
+
+            .icon-3{ animation: float3 4.5s ease-in-out infinite alternate; }
+
+            @keyframes float3 {
+                0% {
+                    transform: translateY(0) rotate(1deg);
+                }
+                50% {
+                    transform: translateY(-12px) rotate(-2deg);
+                }
+                100% {
+                    transform: translateY(0) rotate(0deg);
+                }
+            }
+
+            .icon-4{ animation: float4 4s ease-in-out infinite alternate; }
+
+            @keyframes float4 {
+                0% {
+                    transform: translateY(-13px) rotate(-3deg);
+                }
+                100% {
+                    transform: translateY(0) rotate(3deg);
+                }
+            }
+
+            .apps-box img{
+                width: 2rem;
+                height: auto;
+                filter: invert(100%) drop-shadow(0 0 2.5px #cb34a5);
+                margin-right: .5rem;
+            }
+
+            .app-box{
+                margin: .6rem;
+                color: #cb34a5;
+            }
+
+            .app-box span{
+                text-shadow: none;
+                transition: all .3s;
+            }
+
+            .jobs-box span{
+                margin: 1rem;
+            }
+
+            .app-box span:hover{
+                text-shadow: 0 0 2.5px #cb34a5;
+                transition: all .3s;
+            }
+
+            .projects-box{
+                margin: 5rem 0;
+            }
+
+            #line4{
+                 width: 40vw; 
+                 padding: 1rem;
+            }
+
+            .iframe{
+                width: 546px;
+                height: 307px;
+                margin: 3rem;
+            }
+
+            iframe{
+                border: 3px solid #21ef80;
+                border-radius: 30px;
             }
 
             .carousel {
@@ -123,7 +253,6 @@
                 margin: 0;
                 border: 6px solid #585eff;
                 border-radius: 0 2rem 0 2rem;
-                /* box-shadow: 0 0 1px 6px #585eff55; */
             }
 
             .carousel-imgs {
@@ -172,233 +301,179 @@
                 cursor: pointer;
             }
 
-            .carousel-btns span:hover {
-                background: #000;
-            }
-
             .prev{padding: 10px 10px 10px 5px; border-radius: 0 10px 10px 0;}
             .next{padding: 10px 5px 10px 10px; border-radius: 10px 0 0 10px;}
 
-            .art-presentation-box, .art-slide2-presentation-box{
-                margin: 0;
-                padding: 20px;
-                position: relative;
-                width: 80vw;
-                height: auto;
-                border: 3px solid #cb34a5;
-                border-radius: 30px;
-                background: #000;
-            }
-
-            #art-presentation, .art-slide2-presentation{
-                color: #fff;
-                font-size: clamp(.8em, 1.2vw, 2em);
-            }
-
-            .art-slide2-presentation-box{
-                width: 40vw;
-                margin: 0 3rem 0 0;
-            }
-
-            #artSlide1, #artSlide2 {
-                position: absolute;
-                width: 100vw;
-                height: 100vh;
-                top: 0;
-                transition: transform 0.5s ease-in-out;
-                flex-wrap: nowrap;
-            }
-
-            #artSlide1{ left: 0; }
-
-            #artSlide2{ left: 100vw; flex-direction: row; }
-
-            .apps-box{
-                margin-top: 1rem;
-            }
-
-            .art-item{
-                margin: 3rem 3rem 0;
-            }
-
-            .art-item span{
-                margin: 3rem 0 0;
-                color: #fff;
-                font-size: clamp(.6em, 1.7vw, 2.7em);
-            }
-
-            .art-item img{
-                height: 100px;
-                width: auto;
-                filter: drop-shadow(0 0 5px #cb34a5);
-            }
-
-            apps-box{
-                margin-top: 1rem;
-            }
-
-            .apps-box img{
-                width: 2rem;
-                height: auto;
-                filter: invert(100%) drop-shadow(0 0 2.5px #cb34a5);
-                margin-right: .5rem;
-            }
-
-            .app-box{
-                margin: .6rem;
-                color: #cb34a5;
-            }
-
-            .app-box span{
-                text-shadow: none;
-                transition: all .3s;
-            }
-
-            @media screen and (max-width: 940px) {
-                #artSlide2{
-                    flex-direction: column;
-                    height: 200vh;
-                    overflow-y: auto;
-                    -webkit-overflow-scrolling: touch;
-                }
-                .art-slide2-presentation-box{
-                    width: 80vw;
-                    margin: 1rem 0;
-                }
-            }
-
-            @media screen and (max-width: 800px) {
-                .presentation-btn-box a {
-                    margin: 20px;
-                }
-                .name{
-                    letter-spacing: 0;
-                }
-                .header{
-                    flex-direction: row;
-                }
+            @media screen and (max-width: 900px) {
+                .title{position:relative; top: .5rem;}
+                #name{font-size: 2rem;}
+                .description{max-width: 90vw; margin: 2% 1% 1%;}
+                .header{flex-direction: row; left: .2rem; top: .2rem; z-index: 101;}
+                .header span{font-size: 12px;}
                 #español{border-radius: 10px 0 0 10px;}
                 #english{border-radius: 0 10px 10px 0;}
-                #menuArt{
-                    bottom: 12px;
-                    left: 84px;
-                    border-radius: 0 10px 10px 0;
+            }
+
+            @media screen and (max-width: 826px){
+                #line4{
+                    width: 90vw;
                 }
-                #menu.extend{
-                    width: auto;
-                    border-radius: 10px 0 0 10px;
-                }
-                .art-presentation-box{
-                    padding: 15px;
-                    width: 85vw;
-                    height: auto;
-                }
-                .art-item{
-                    margin: 1rem 1rem 0;
-                }
+            }
+
+            @media screen and (max-width:516px){
+                .iframe{width: 400px;height: 225px;}
             }
 
             @media (max-width: 450px) {
-                .carousel {
-                    width: 90vw;
-                    height: 70vh;
-                }
-                .carousel-btns span {
-                    border: none;
-                }
-                .art-presentation-box{
-                    padding: 10px;
-                    width: 90vw;
-                    height: auto;
-                }
-                .art-item{
-                    margin: 1.5rem .3rem;
-                }
-                .art-item span{
-                    margin: 1rem 0 0;
-                    color: #000;
-                }
-                .art-item img{
-                    height: 60px;
-                }
+                #name{font-size: 1rem;}
+                .description{width: 90vw;}
+                .carousel{width: 90vw; height: 70vh;}
+                .carousel-btns span{border: none;}
             }
-
         </style>
     </head>
-    <body class="body">
-        <div id="home" class="section-box flex fc center">
-            <div class="presentation-texts-box flex fc center">
-                <span id="title" class="name">ROMINA<br>ANGELANI</span>
-                <span id="description" class="hi">¡Un gusto conocerte!</span>
-
-                <div class="presentation-btn-box flex fr center">
-                    <a id="skill-1" href="#artSlide1">ANIMACIÓN</a>
-                    <a id="skill-2" href="#dev">PROGRAMACIÓN</a>
-                    <a id="skill-3" href="#lan">TRADUCCIÓN</a>
-                </div>
-            </div>
+    <body>
+        <canvas id="starsCanvas" class="canvas-back"></canvas>
+        
+        <div class="header flex fc">
+            <span id="español" onclick="cambiarIdioma('es')">Español</span>
+            <span id="english" onclick="cambiarIdioma('en')">English</span>
         </div>
-        <a id="menu" href="#home">MENÚ</a>
-        <div id="art" class="section-box flex fr center">
-            <div id="artSlide1" class="section-slide flex fc center">
-                <div class="art-presentation-box">
-                    <p id="art-presentation">
-                        Estudio y practico ilustración hace más de 14 años, es una pasión que descubrí a muy temprana edad. A mis 14 años comencé a trasladar todo mi conocimiento al arte digital, aprendiendo, con los años, el uso de diversos programas y herramientas que hoy en día me permiten dedicarme al diseño, la ilustración y la animación de manera proferional. 
-                        <br />
-                        Con experiencia en trabajo desde 2020, tengo varios proyectos realizados que demuestran mis habilidades:
-                    </p>
+
+        <div class="title flex fr wrap center">
+            <img width="100px" height="auto" src="chibi.png" class="icon-4" />
+            <p>
+                <span id="HMNI" class="title-line">¡Hola! Me llamo...</span><br />
+                <span id="name">ROMINA ANGELANI</span><br />
+                <span id="NTMY" class="title-line">¡Un gusto conocerte!</span>
+            </p>
+        </div>
+
+        <div class="content-box flex center wrap">
+            <div class="description">
+                <span id="desc-line1">Desarrollé este sencillo portfolio web para que conozcas mis habilidades en:</span>
+            </div>
+            <div class="flex fr center wrap" style="margin: 1rem 0;">
+                <a href="#skills"> 
+                    <div class="skill-box flex fc center">
+                        <img class="icon icon-1" src="design-icon.svg" alt="design icon" />
+                        <span id="des" class="pink skill">DISEÑO</span>
+                    </div>
+                </a>
+                <a href="#skills"> 
+                    <div  class="skill-box flex fc center">
+                        <img class="icon icon-2" src="illustration-icon.svg" alt="illustration icon" />
+                        <span id="ilu" class="green skill">ILUSTRACIÓN</span> 
+                    </div>
+                </a>
+                <a href="#skills"> 
+                    <div  class="skill-box art-item art-item-3 flex fc center">
+                        <img class="icon icon-3" src="animation-icon.svg" alt="animation icon" />
+                        <span id="ani" class="viol skill">ANIMACIÓN</span> 
+                    </div>
+                </a>
+                <a href="#skills"> 
+                    <div  class="skill-box flex fc center"> 
+                        <img class="icon icon-4" src="development-icon.svg" alt="development icon" />
+                        <span id="dev" class="green skill">PROGRAMACIÓN</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="description" id="skills">
+                <span id="desc-line2">A lo largo de 6 años aprendí a usar de manera profesional diversos programas, plataformas y herramientas, de altos y bajos recursos, especializados y generales, como:</span>
+                <div class="apps-box flex fr center wrap" style="margin: 1rem 0;">
+                    <div class="app-box flex fr center">
+                        <img src="ps-ps-svgrepo-com.svg" alt="Photoshop logo" />
+                        <span>Photoshop</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="ai-ai-svgrepo-com.svg" alt="Photoshop logo" />
+                        <span>Adobde Illustrator</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="figma-logo-thin-svgrepo-com.svg" alt="Photoshop logo" />
+                        <span>Figma</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="canva logo vector.svg" alt="Photoshop logo" />
+                        <span>Canva</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="sketchbook-svgrepo-com.svg" alt="Photoshop logo" />
+                        <span>Autodesk Sketchbook</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="krita-svgrepo-com.svg" alt="Photoshop logo" />
+                        <span>Krita</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="procreate-logo.svg" alt="Photoshop logo" />
+                        <span>Procreate Dreams</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="blender-svgrepo-com.svg" alt="Photoshop logo" />
+                        <span>Blender</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="tiled logo vector.svg" alt="Photoshop logo" />
+                        <span>Tiled</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="vsc logo vector.svg" alt="Photoshop logo" />
+                        <span>Visual Studio Code</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="drupal logo.svg" alt="Photoshop logo" />
+                        <span>Drupal</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="wordpress logo.svg" alt="Photoshop logo" />
+                        <span>Wordpress</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="filmora logo victor.svg" alt="Photoshop logo" />
+                        <span>Filmora</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="videopad logo vector.svg" alt="Photoshop logo" />
+                        <span>VideoPad</span>
+                    </div>
+                    <div class="app-box flex fr center">
+                        <img src="fl stuio logo.svg" alt="Photoshop logo" />
+                        <span>FL Studio</span>
+                    </div>
                 </div>
-                <div id="artProjects" class="art-projects flex fr center">
-                        <a class="art-item art-item-1 flex fc center" href="#artSlide2">
-                            <img src="design-icon.svg" alt="design icon" />
-                            <span>DISEÑO</span>
-                        </a>
-                        <a class="art-item art-item-2 flex fc center" href="#artSlide3">
-                            <img src="illustration-icon.svg" alt="design icon" />
-                            <span>ILUSTRACIÓN</span>
-                        </a>
-                        <a class="art-item art-item-3 flex fc center" href="#artSlide4">
-                            <img src="animation-icon.svg" alt="design icon" />
-                            <span>ANIMACIÓN</span>
-                        </a>
+                <span id="desc-line3">Con experiencia en trabajo desde 2020 en empresas y emprendimientos:</span>
+                <div class="apps-box jobs-box flex fr center wrap" style="margin: 1rem 0;">
+                    <span class="pink skill">
+                        STUKA RACUDA<br />
+                        <a href="https://www.stuka-racuda.com/">stuka-racuda.com</a>
+                    </span>
+                    <span class="green skill">
+                        NOVARTIS<br />
+                        <a href="https://www.medicalacademy.cl/home-page">medicalacademy.cl</a>
+                    </span>
+                    <span class="viol skill">
+                        BOUNCE PARK<br />
+                        <a href="https://www.bouncepark.com.ar/">bouncepark.com.ar</a>
+                    </span>
+                    <span class="green skill">
+                        CORPORATE AVIATION TRAINING<br />
+                        <a href="https://catraining.com.ar/ ">catraining.com.ar</a>
+                    </span>
+                    <span class="pink skill">
+                        SIETE COLORES<br />
+                        <a href="https://www.instagram.com/espaciosietecolores">instagram.com/espaciosietecolores</a>
+                    </span>
+                    <span class="viol skill">
+                        PIENSA EN TI<br />
+                        <a href="https://www.instagram.com/piensaenti.spa">instagram.com/piensaenti.spa</a>
+                    </span>
                 </div>
             </div>
-            <div id="artSlide2" class="section-slide flex fr center">
-                <div class="art-slide2-presentation-box flex fc">
-                    <p class="art-slide2-presentation">
-                        A lo largo de 6 años aprendí a usar de manera profesional diversos programas, de altos y bajos recursos, especializados y generales, como:
-                        <div class="apps-box flex fr center">
-                            <div class="app-box flex fr center">
-                                <img src="ps-ps-svgrepo-com.svg" alt="Photoshop logo" />
-                                <span>Photoshop</span>
-                            </div>
-                            <div class="app-box flex fr center">
-                                <img src="ai-ai-svgrepo-com.svg" alt="Photoshop logo" />
-                                <span>Adobde Illustrator</span>
-                            </div>
-                            <div class="app-box flex fr center">
-                                <img src="figma-logo-thin-svgrepo-com.svg" alt="Photoshop logo" />
-                                <span>Figma</span>
-                            </div>
-                            <div class="app-box flex fr center">
-                                <img src="sketchbook-svgrepo-com.svg" alt="Photoshop logo" />
-                                <span>Autodesk Sketchbook</span>
-                            </div>
-                            <div class="app-box flex fr center">
-                                <img src="krita-svgrepo-com.svg" alt="Photoshop logo" />
-                                <span>Krita</span>
-                            </div>
-                            <div class="app-box flex fr center">
-                                <img src="procreate-logo.svg" alt="Photoshop logo" />
-                                <span>Procreate Dreams</span>
-                            </div>
-                            <div class="app-box flex fr center">
-                                <img src="blender-svgrepo-com.svg" alt="Photoshop logo" />
-                                <span>blender</span>
-                            </div>
-                        </div>
-                    </p>
-                </div>
+
+            <div class="projects-box flex fr center wrap">
                 <div class="carousel">
                     <div class="carousel-imgs">
                         <div class="carousel-item">
@@ -413,17 +488,68 @@
                             <img src="rollingoffargentina-logo.png" alt="Diseño de logo para empresa">
                             <span class="carousel-text">Diseños de logos para empresa</span>
                         </div>
-                    </div>                    
+                    </div>          
                     <div class="carousel-btns">
                         <span class="prev" onclick="prevSlide()">❮</span>
                         <span class="next" onclick="nextSlide()">❯</span>
                     </div>
                 </div>
+
+                <div class="projects-box-c2 flex fc center">
+                    <div class="iframe">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/BE2U7Y9avhs?si=oygMGX4Sa5PDBNff" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+
+                    <div id="line4" class="description">
+                        En el carrousel puedes ver algunas pequeñas muestras de mis trabajos (también puedes ver más sobre ellos en los link de la sección de empresas y emprendimientos arriba). 
+                        <br><br>
+                        En el video adjunto tienes a mi propio proyecto personal, el capítulo piloto de una serie animada.
+                    </div>
+                </div>
             </div>
-            <a id="menuArt" href="#artSlide1">VOLVER</a>
         </div>
 
         <script>
+            // Languages
+            const textos = {
+                es: {
+                    HMNI: "¡Hola! Me llamo...",
+                    NTMY: "¡Un gusto conocerte!",
+                    line1: "Desarrollé este sencillo portfolio web para que conozcas mis habilidades en:",
+                    line2: "A lo largo de 6 años aprendí a usar de manera profesional diversos programas, plataformas y herramientas, de altos y bajos recursos, especializados y generales, como:",
+                    line3: "Con experiencia en trabajo desde 2020 en empresas y emprendimientos:",
+                    line4: "A la izquierda puedes ver algunas pequeñas muestras de mis habilidades. A la derecha tienes a mi propio proyecto personal, el capítulo piloto de una serie animada.",
+                    des: "DISEÑO",
+                    ilu: "ILUSTRACIÓN",
+                    ani: "ANIMACIÓN",
+                    dev: "PROGRAMACIÓN"
+                },
+                en: {
+                    HMNI: "Hi! My name is...",
+                    NTMY: "Nice to meet you!",
+                    line1: "I developed this simple website so you can learn about my skills in:",
+                    line2: "Over 6 years I learned to professionally use various programs, platforms and tools, high and low resources, specialized and general, such as:",
+                    line3: "With work experience since 2020 in companies and ventures:",
+                    line4: "On the left you can see some small samples of my skills. On the right you have my own personal project, the pilot episode of an animated series.",
+                    des: "DESIGN",
+                    ilu: "ILLUSTRATION",
+                    ani: "ANIMATION",
+                    dev: "DEVELOPMENT"
+                }
+            };
+        
+            function cambiarIdioma(idioma) {
+                document.getElementById("HMNI").textContent = textos[idioma].HMNI;
+                document.getElementById("NTMY").textContent = textos[idioma].NTMY;
+                document.getElementById("desc-line1").textContent = textos[idioma].line1;
+                document.getElementById("desc-line2").textContent = textos[idioma].line2;
+                document.getElementById("desc-line3").textContent = textos[idioma].line3;
+                document.getElementById("des").textContent = textos[idioma].des;
+                document.getElementById("ilu").textContent = textos[idioma].ilu;
+                document.getElementById("ani").textContent = textos[idioma].ani;
+                document.getElementById("dev").textContent = textos[idioma].dev;
+            }
+
             // Slideshow
             let index = 0;
             const slides = document.querySelectorAll(".carousel-imgs img");
@@ -444,8 +570,150 @@
                 updateCarousel();
             }
 
-            setInterval(nextSlide, 20000); 
+            setInterval(nextSlide, 10000); 
+        
+            // Background
+            const canvas = document.getElementById("starsCanvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const stars = [];
+            const numStars = 200;
+            let shootingStars = [];
+
+            // Colores permitidos para las estrellas
+            const starColors = ["#FFFFFF", "#21EF80", "#FFFFFF", "#FF63D8", "#FFFFFF", "#8488F4", "#FFFFFF"];
+
+            // Crear estrellas
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 1, // Tamaño más pequeño
+                    alpha: Math.random() * 0.5 + 0.5,
+                    delta: Math.random() * 0.02,
+                    speedX: (Math.random() - 0.5) * 0.2,
+                    speedY: (Math.random() - 0.5) * 0.2,
+                    color: starColors[Math.floor(Math.random() * starColors.length)]
+                });
+            }
+
+            // Dibujar estrellas
+            function drawStars() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let star of stars) {
+                    drawBrillo(star.x, star.y, star.size, star.color, star.alpha);
+
+                    // Efecto de parpadeo
+                    star.alpha += star.delta;
+                    if (star.alpha >= 1 || star.alpha <= 0.3) {
+                        star.delta *= -1;
+                    }
+
+                    // Movimiento sutil
+                    star.x += star.speedX;
+                    star.y += star.speedY;
+
+                    // Reposicionar si salen de pantalla
+                    if (star.x < 0) star.x = canvas.width;
+                    if (star.x > canvas.width) star.x = 0;
+                    if (star.y < 0) star.y = canvas.height;
+                    if (star.y > canvas.height) star.y = 0;
+                }
+
+                // Dibujar estrellas fugaces
+                for (let i = 0; i < shootingStars.length; i++) {
+                    let star = shootingStars[i];
+
+                    // Dibujar la estela más larga e intensa
+                    drawTrail(star.x, star.y, star.size, star.alpha);
+
+                    // Dibujar la estrella fugaz
+                    drawBrillo(star.x, star.y, star.size * 2, "#FFFFFF", star.alpha);
+
+                    // Movimiento
+                    star.x += star.speedX;
+                    star.y += star.speedY;
+                    star.alpha -= 0.008; // Desvanecimiento suave
+
+                    // Eliminar cuando se desvanece completamente
+                    if (star.alpha <= 0) {
+                        shootingStars.splice(i, 1);
+                        i--;
+                    }
+                }
+
+                requestAnimationFrame(drawStars);
+            }
+
+            // Función para dibujar brillos ✨
+            function drawBrillo(x, y, size, color, alpha) {
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.beginPath();
+
+                // Brillo en forma de rombo curvado hacia adentro
+                ctx.moveTo(0, -size);
+                ctx.quadraticCurveTo(-size * 0.3, -size * 0.3, -size, 0);
+                ctx.quadraticCurveTo(-size * 0.3, size * 0.3, 0, size);
+                ctx.quadraticCurveTo(size * 0.3, size * 0.3, size, 0);
+                ctx.quadraticCurveTo(size * 0.3, -size * 0.3, 0, -size);
+
+                ctx.fillStyle = `rgba(${hexToRgb(color)}, ${alpha})`;
+
+                // Efecto de brillo
+                ctx.shadowBlur = 15; // Brillo más intenso
+                ctx.shadowColor = color;
+
+                ctx.fill();
+                ctx.restore();
+            }
+
+            // Dibujar la estela de la estrella fugaz (más larga e intensa)
+            function drawTrail(x, y, size, alpha) {
+                let gradient = ctx.createLinearGradient(x - size * 10, y - size * 10, x, y);
+                gradient.addColorStop(0, `rgba(255, 255, 255, 0)`);
+                gradient.addColorStop(1, `rgba(255, 255, 255, ${alpha})`);
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.moveTo(x - size * 10, y - size * 10);
+                ctx.lineTo(x + size * 2, y + size * 2);
+                ctx.lineTo(x - size * 2, y - size * 2);
+                ctx.fill();
+            }
+
+            // Crear estrellas fugaces con estela más larga
+            function createShootingStar() {
+                shootingStars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height * 0.5,
+                    size: Math.random() * 2 + 1,
+                    speedX: Math.random() * 10 + 5, // Velocidad más alta
+                    speedY: Math.random() * 5 + 2,
+                    alpha: 1
+                });
+
+                setTimeout(createShootingStar, Math.random() * 4000 + 2000); // Más frecuentes
+            }
+
+            // Convertir HEX a RGB
+            function hexToRgb(hex) {
+                let bigint = parseInt(hex.substring(1), 16);
+                return `${(bigint >> 16) & 255}, ${(bigint >> 8) & 255}, ${bigint & 255}`;
+            }
+
+            // Ajustar tamaño del canvas cuando cambia la ventana
+            window.addEventListener("resize", () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            drawStars();
+            createShootingStar();
         </script>        
     </body>
 </html>
-
