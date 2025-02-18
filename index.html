@@ -674,7 +674,7 @@
             const carousel = document.querySelector(".carousel-imgs");
 
             function updateCarousel() {
-                let desplazamiento = window.innerWidth <= 450 ? 330 : 400; // 330px en móviles, 400px en PC
+                let desplazamiento = window.innerWidth <= 450 ? 330 : 400; 
                 carousel.style.transform = `translateX(${-index * desplazamiento}px)`;
             }
 
