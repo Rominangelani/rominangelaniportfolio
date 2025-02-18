@@ -674,7 +674,8 @@
             const carousel = document.querySelector(".carousel-imgs");
 
             function updateCarousel() {
-                carousel.style.transform = `translateX(${-index * 400}px)`;
+                let desplazamiento = window.innerWidth <= 450 ? 330 : 400; // 330px en móviles, 400px en PC
+                carousel.style.transform = `translateX(${-index * desplazamiento}px)`;
             }
 
             function nextSlide() {
