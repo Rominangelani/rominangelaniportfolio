@@ -1266,7 +1266,7 @@
                         </div>
                     </div>
                     <div class="planet-slide">
-                        <div class="flex fr cj ca wrap">
+                        <!-- div class="flex fr cj ca wrap">
                             <div class="sd-border flex fc cj ca">
                                 <br /><h4 id="translate_title" class="skill_title">TRADUCCIÓN</h4>
                                 <div class="jobs-box flex fr cj ca wrap">
@@ -1274,7 +1274,7 @@
                                     <span class="viol skill skill-translate" id="english" onclick="cambiarIdioma('en')">English</span>
                                 </div>
                             </div>
-                        </div>
+                        </div -->
                     </div>
                 </div>
 
@@ -1417,19 +1417,23 @@
                     HMNI: "¡Hola! Me llamo",
                     NTMY: "¡Un gusto conocerte!",
                     subtitle: "Desarrollé este sencillo portafolio web para que conozcas un poco de mis habilidades en:",
-                    des: "DISEÑO",
                     ilu: "ILUSTRACIÓN",
+                    des: "DISEÑO",
+                    edi: "EDICIÓN",
                     ani: "ANIMACIÓN",
-                    dev: "PROGRAMACIÓN"
+                    dev: "PROGRAMACIÓN",
+                    p1: "TECNOLOGÍAS Y HERRAMIENTAS"
                 },
                 en: {
                     HMNI: "Hi! My name is",
                     NTMY: "Nice to meet you!",
                     subtitle: "I developed this simple web portfolio so you can learn a little about my skills in:",
-                    des: "DESIGN",
                     ilu: "ILLUSTRATION",
+                    des: "DESIGN",
+                    edi: "EDITION",
                     ani: "ANIMATION",
-                    dev: "DEVELOPMENT"
+                    dev: "DEVELOPMENT",
+                    p1: "PLATFORMS AND TOOLS"
                 }
             };
         
@@ -1437,9 +1441,12 @@
                 document.getElementById("HMNI").textContent = textos[idioma].HMNI;
                 document.getElementById("NTMY").textContent = textos[idioma].NTMY;
                 document.getElementById("subtitle").textContent = textos[idioma].subtitle;
+                document.getElementById("illustration_title").textContent = textos[idioma].ilu;
                 document.getElementById("design_title").textContent = textos[idioma].des;
-                document.getElementById("illustration_title").textContent = textos[idioma].ilu;
-                document.getElementById("illustration_title").textContent = textos[idioma].ilu;
+                document.getElementById("edition_title").textContent = textos[idioma].edi;
+                document.getElementById("animation_title").textContent = textos[idioma].ani;
+                document.getElementById("development_title").textContent = textos[idioma].dev;
+                document.querySelectorAll(".tecs_n_tools").textContent = textos[idioma].p1;
             }
 
             //VIDEO
@@ -1483,4 +1490,3 @@
         </script>
     </body>
 </html>
-
