@@ -35,32 +35,6 @@
                 color: #fff;
             }
 
-            .header{
-                position: fixed;
-                height: auto;
-                bottom: 38rem;
-                left: 1rem;
-                z-index: 100;
-                display: flex;
-                text-align: center;
-            }
-        
-            .header span{
-                padding: 4px;
-                color: #fff;
-                background:#000;
-                border: 2px solid #585eff;
-            }
-
-            #español{border-radius: 10px 10px 0 0;}
-            #english{border-radius: 0 0 10px 10px;}
-        
-            .header span:hover{
-                cursor: pointer;
-                background: #585eff;
-                border: 2px solid #000;
-            }
-
             #HMNI{ translate: 0 8px; text-align: left; }
             #name{ font-size: 2rem; color: #ff63d8; text-shadow: 3px 3px 1px #21ef80; }
             #NTMY{ text-align: right; }
@@ -111,24 +85,31 @@
 
             .skills-title{
                 max-width: 40vw;
-                margin-top: 1rem;
-                margin-left: 2.5rem;
+                margin: 1rem 2rem 0;
                 padding: 1rem;
                 text-align: center;
                 color: #fff;
                 background: #000;
-                border: 3px solid #cb34a5;
+                border: 3px solid #21ef80;
+                box-shadow: 0 0 1rem #21ef80;
                 border-radius: 30px;
             }
+
+            .mail{
+                margin-top: 1rem;
+                width: 50px;
+                height: auto;
+                filter: drop-shadow(0 0 2.5px #21ef80);
+                cursor: pointer;
+            }
+
+            .h4{ max-width: 86%; }
 
             .skills-slideshow {
                 position: relative;
                 width: 100%;
                 height: 72vh;
                 overflow: hidden;
-                background: #000c;
-                border-top: 3px #21ef80 solid;
-                border-bottom: 3px #21ef80 solid;
                 margin-top: .5rem;
             }
 
@@ -147,22 +128,7 @@
                 align-items: center;
             }
 
-            .administracion { background: radial-gradient(circle at 30% 30%, #21ef80, #0a5c31); }
-
-            .icon-container{
-                position: absolute;
-                z-index: 1;
-                margin-bottom: 1.5%;
-                animation: float-2 1s ease-in-out infinite alternate;
-            }
-
-            @keyframes float-2 {
-                0% { transform: rotate(-2deg); }
-                20% { transform: rotate(2deg); }
-                40% { transform: rotate(-4deg); }
-                40% { transform: rotate(4deg); }
-                100% { transform: rotate(-2deg); }
-            }
+            .skill_title{ text-shadow: 0 0 5px #cb34a5; }
 
             .skills-title{ justify-self: center; }
 
@@ -184,11 +150,6 @@
                 background: #000;
                 border: 2.5px #cb34a5 solid;
                 box-shadow: 0 0 15px #cb34a5;
-            }
-
-            .skill-title{
-                margin: .6rem;
-                text-shadow: 0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;
             }
 
             .spaceship {
@@ -222,7 +183,7 @@
                 50% { transform: translateY(-60%) translateX(5px); }
             }
 
-            .apps-box{margin: 1.5rem 0;}
+            .apps-box{margin: 1rem 0;}
 
             .apps-box img{
                 width: 2rem;
@@ -241,7 +202,7 @@
                 color: #21ef80;
             }
 
-            .jobs-box span{margin: 1rem;}
+            .jobs-box{margin: 1.5rem;}
 
             .skill{
                 margin: 1rem;
@@ -377,24 +338,8 @@
                 background: #21ef80;
             }
 
-            .footer{
-                padding: 1.2rem;
-                width: 100%;
-                height: auto;
-                color: #fff;
-                text-align: center;
-                background: #000;
-                border-top: 3px solid #cb34a5;
-            }
-            
-            .mail{
-                position: fixed;
-                width: 50px;
-                height: auto;
-                bottom: 3rem;
-                right: 2rem;
-                filter: drop-shadow(0 0 2.5px #000);
-            }
+            .skill-translate{ padding: 1rem; }
+            .skill-translate:hover{ background: #585eff84; }
 
             @media (max-width: 768px) {
                 .flex.fr.cj.ca{ flex-direction: column; text-align: center; }
@@ -402,24 +347,17 @@
                 #HMNI { text-align: center; }
                 #name{ font-size: 1.8rem; }
                 #NTMY { text-align: center; }
-                .icon-container{ margin-bottom: 2.5%; font-size: 14px; }
-                .skills-title{ max-width: 75vw; margin-left: 0; margin-bottom: 1rem; }
+                .skills-title{ max-width: 75vw; margin: 1rem; }
                 .skills-slideshow{ height: 54vh; }
-                .header{ font-size: 14px; bottom: 4rem; left: 2.5rem; }
                 .horizontal,.vertical{ width: 100%; height: auto; }
                 .sd-border{ padding: 0; }
                 .skill-description{ padding: 0; }
                 .card { border: none; box-shadow: none; }
-                .mail{ width: 30px; right: 2.5rem; bottom: 4rem; }
+                .mail{ z-index: 1; width: 30px; margin: 0; position: fixed; bottom: 3rem; right: 3rem; text-shadow: 0 0 5px #000; }
             }
         </style>
     </head>
     <body>
-        <!-- div class="header flex fc">
-            <span id="español" onclick="cambiarIdioma('es')">Español</span>
-            <span id="english" onclick="cambiarIdioma('en')">English</span>
-        </div -->
-
         <div class="flex fc cj ca">
             <div class="flex fr cj ca" style="margin-top: 1.5rem;">
                 <div style="flex-direction: row;" class="presentation flex cj ca">
@@ -443,8 +381,10 @@
                 </div>
 
                 <div class="skills-title">
-                    <span id="subtitle">Desarrollé este sencillo portfolio web para que conozcas un poco de mis habilidades en:</span>
+                    <span id="subtitle">Desarrollé este sencillo portafolio web para que conozcas un poco de mis habilidades en:</span>
                 </div>
+                
+                <a href="mailto:rominangelani@gmail.com"><img class="mail" src="mail-logo.png" /></a>
             </div>
 
             <section class="skills-slideshow flex cj ca wrap">
@@ -452,10 +392,7 @@
                     <div class="planet-slide">
                         <div class="sd-border flex fr cj ca wrap">
                             <div class="skill-description flex fc">
-                                <div class="icon-container flex fr cj">
-                                    <h3 id="illustration_title" class="skill-title flex ca">ILUSTRACIÓN</h3>
-                                </div>
-                                <br /><h4>Tecnologías y/o herramientas</h4>
+                                <br /><h4 id="illustration_title" class="skill_title">ILUSTRACIÓN</h4><br /><h4 class="tecs_n_tools">Tecnologías y herramientas</h4>
                                 <div class="apps-box flex fr cj ca wrap">
                                     <div class="app-box flex fr cj ca">
                                         <img src="sketchbook-svgrepo-com.svg" alt="Autodesk Sketchbook logo" />
@@ -483,7 +420,7 @@
                                     </div>
                                 </div>
                                 <h4>Personas y emprendimientos para los que realicé trabajos de ilustración</h4>
-                                <div class="apps-box jobs-box flex fr cj ca wrap">
+                                <div class="jobs-box flex fr cj ca wrap">
                                     <a class="green skill" href="https://www.instagram.com/espaciosietecolores" target="_blank">
                                         <strong>ESPACIO 7 COLORES</strong><br />
                                         2021 - 2022
@@ -690,10 +627,7 @@
                     <div class="planet-slide">
                         <div class="sd-border flex fr cj ca wrap">
                             <div class="skill-description flex fc">
-                                <div class="icon-container flex fr cj">
-                                    <h2 id="design_title" class="skill-title flex ca">DISEÑO</h2>
-                                </div>
-                                <br /><h4>Tecnologías y/o Herramientas</h4>
+                                <br /><h4 id="design_title" class="skill_title">DISEÑO</h4><br /><h4 class="tecs_n_tools">Tecnologías y Herramientas</h4>
                                 <div class="apps-box flex fr cj ca wrap">
                                     <div class="app-box flex fr cj ca">
                                         <img src="ps-ps-svgrepo-com.svg" alt="Adobe Photoshop logo" />
@@ -717,7 +651,7 @@
                                     </div>
                                 </div>
                                 <h4>Empresas y emprendimientos para los que realicé trabajos de diseño</h4>
-                                <div class="apps-box jobs-box flex fr cj ca wrap">
+                                <div class="jobs-box flex fr cj ca wrap">
                                     <a class="pink skill" href="https://www.instagram.com/espaciosietecolores" target="_blank">
                                         <strong>ESPACIO 7 COLORES</strong><br />
                                         2021 - 2022
@@ -909,10 +843,7 @@
                     <div class="planet-slide">
                         <div class="sd-border flex fr cj ca wrap">
                             <div class="skill-description flex fc">
-                                <div class="icon-container flex fr cj">
-                                    <h2 id="design_title" class="skill-title flex ca">EDICIÓN</h2>
-                                </div>
-                                <br /><h4>Tecnologías y/o Herramientas</h4>
+                                <br /><h4 id="edition_title" class="skill_title">EDICIÓN</h4><br /><h4 class="tecs_n_tools">Tecnologías y Herramientas</h4>
                                 <div class="apps-box flex fr cj ca wrap">
                                     <div class="app-box flex fr cj ca">
                                         <img src="ps-ps-svgrepo-com.svg" alt="Photoshop logo" />
@@ -940,7 +871,7 @@
                                     </div>
                                 </div>
                                 <h4>Personas, empresas y emprendimientos para los que realicé trabajos de edición de fotos y/o videos</h4>
-                                <div class="apps-box jobs-box flex fr cj ca wrap">
+                                <div class="jobs-box flex fr cj ca wrap">
                                     <a class="pink skill" href="https://www.instagram.com/espaciosietecolores" target="_blank">
                                         <strong>ESPACIO 7 COLORES</strong><br />
                                         2021 - 2022
@@ -1084,10 +1015,7 @@
                     <div class="planet-slide">
                         <div class="sd-border flex fr cj ca wrap">
                             <div class="skill-description flex fc">
-                                <div class="icon-container flex fr cj">
-                                    <h2 id="design_title" class="skill-title flex ca">ANIMACIÓN</h2>
-                                </div>
-                                <br /><h4>Tecnologías y/o Herramientas</h4>
+                                <br /><h4 id="animation_title" class="skill_title">ANIMACIÓN</h4><br /><h4 class="tecs_n_tools">Tecnologías y Herramientas</h4>
                                 <div class="apps-box flex fr cj ca wrap">
                                     <div class="app-box flex fr cj ca">
                                         <img src="sketchbook-svgrepo-com.svg" alt="autodesk sketchbook logo" />
@@ -1115,7 +1043,7 @@
                                     </div>
                                 </div>
                                 <h4>Personas, empresas y emprendimientos para los que realicé trabajos de animación</h4>
-                                <div class="apps-box jobs-box flex fr cj ca wrap">
+                                <div class="jobs-box flex fr cj ca wrap">
                                     <a class="green skill" href="https://www.instagram.com/redmarketingdigital__/" target="_blank">
                                         <strong>RED MARKETING DIGITAL</strong><br />
                                         2022
@@ -1198,10 +1126,7 @@
                     <div class="planet-slide">
                         <div class="sd-border flex fr cj ca wrap">
                             <div class="skill-description flex fc">
-                                <div class="icon-container flex fr cj">
-                                    <h2 id="design_title" class="skill-title flex ca">PROGRAMACIÓN</h2>
-                                </div>
-                                <br /><h4>Tecnologías y/o Herramientas</h4>
+                                <br /><h4 id="development_title" class="skill_title">PROGRAMACIÓN</h4><br /><h4 class="tecs_n_tools">Tecnologías y Herramientas</h4>
                                 <div class="apps-box flex fr cj ca wrap">
                                     <div class="app-box flex fr cj ca">
                                         <img src="sketchbook-svgrepo-com.svg" alt="visual studio code logo" />
@@ -1250,7 +1175,7 @@
                                 </div>
                                 
                                 <h4>Empresas y emprendimientos para los que realicé trabajos de desarrollo web y/o aplicaciones</h4>
-                                <div class="apps-box jobs-box flex fr cj ca wrap">
+                                <div class="jobs-box flex fr cj ca wrap">
                                     <a class="pink skill" href="https://www.instagram.com/espaciosietecolores" target="_blank">
                                         <strong>ESPACIO 7 COLORES</strong><br />
                                         2021 - 2022
@@ -1340,12 +1265,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="planet-slide">
+                        <div class="flex fr cj ca wrap">
+                            <div class="sd-border flex fc cj ca">
+                                <br /><h4 id="translate_title" class="skill_title">TRADUCCIÓN</h4>
+                                <div class="jobs-box flex fr cj ca wrap">
+                                    <span class="viol skill skill-translate" id="español" onclick="cambiarIdioma('es')">Español</span>
+                                    <span class="viol skill skill-translate" id="english" onclick="cambiarIdioma('en')">English</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div style="rotate: 225deg;" class="spaceship spaceship-left" onclick="prevPlanet()">🚀</div>
                 <div style="rotate: 45deg;" class="spaceship spaceship-right" onclick="nextPlanet()">🚀</div>
-
-                <a href="href='mailto:rominangelani@gmail.com'"><img class="mail" src="mail-logo.png" /></a>
             </section>
         </div>
 
@@ -1504,8 +1438,8 @@
                 document.getElementById("NTMY").textContent = textos[idioma].NTMY;
                 document.getElementById("subtitle").textContent = textos[idioma].subtitle;
                 document.getElementById("design_title").textContent = textos[idioma].des;
-                document.getElementById("illustration_title-1").textContent = textos[idioma].ilu;
-                document.getElementById("illustration_title-2").textContent = textos[idioma].ilu;
+                document.getElementById("illustration_title").textContent = textos[idioma].ilu;
+                document.getElementById("illustration_title").textContent = textos[idioma].ilu;
             }
 
             //VIDEO
@@ -1549,4 +1483,3 @@
         </script>
     </body>
 </html>
-
